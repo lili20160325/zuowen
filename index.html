@@ -1,0 +1,3767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#fff1e4">
+<title>作文小作坊 · 五年级</title>
+<style>
+:root{
+  --ink:#3e2a4a;--ink2:#7c6a8c;--card:#fffdf9;--line:#f0e2d2;
+  --pink:#ff6d9a;--pink2:#ffe0eb;--purple:#7464f0;--purple2:#ece8ff;
+  --mint:#14956d;--mint2:#d9f6ec;--sun:#e8960a;--sun2:#fff1cc;
+  --coral:#ff7a59;--coral2:#ffe4dc;--sky:#3d8fd1;--sky2:#e3f2ff;
+  --shadow:0 8px 22px rgba(90,50,70,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;overflow-x:hidden;max-width:100%}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  color:var(--ink);font-size:17px;line-height:1.65;
+  background:linear-gradient(165deg,#fff6ea 0%,#ffe6f0 42%,#e7f4ff 100%) fixed;
+  min-height:100vh;min-height:100dvh;
+}
+button,textarea{font-family:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer;touch-action:manipulation}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+textarea{user-select:text;-webkit-user-select:text}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:880px;margin:0 auto;padding:14px 16px 36px}
+.top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.top h1,.top h2{font-size:20px;line-height:1.3;min-width:0}
+.grow{flex:1;min-width:0}
+.icon{
+  min-width:48px;min-height:48px;padding:0 12px;border-radius:16px;
+  background:rgba(255,255,255,.88);box-shadow:0 3px 0 rgba(62,42,74,.08);
+  font-weight:800;font-size:15px;flex:none;
+}
+.logo{font-size:30px;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#ff6d9a,#7464f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--ink2);font-size:14px;margin-top:2px}
+.card{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:16px;min-width:0}
+.lead{font-size:16px;margin:12px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.stat{background:#fff;border-radius:18px;padding:12px 14px;box-shadow:var(--shadow);min-height:72px}
+.stat b{display:block;font-size:26px;margin-top:2px}
+.stat span{color:var(--ink2);font-size:13px;font-weight:700}
+.actions{display:grid;gap:10px;margin-top:12px}
+.btn{
+  min-height:52px;border-radius:18px;padding:12px 16px;font-size:18px;font-weight:800;
+  background:#fff;box-shadow:0 4px 0 rgba(62,42,74,.1);text-align:center;width:100%;
+}
+.btn:active{transform:translateY(2px)}
+.btn.primary{background:linear-gradient(180deg,#ff8eb4,#ff5d92);color:#fff;box-shadow:0 5px 0 #d84a7c}
+.btn.purple{background:linear-gradient(180deg,#9b90ff,#7464f0);color:#fff;box-shadow:0 5px 0 #5346c4}
+.btn.mint{background:linear-gradient(180deg,#3dcb9b,#14956d);color:#fff;box-shadow:0 5px 0 #0d7354}
+.btn.ghost{background:rgba(255,255,255,.75)}
+.btn small{display:block;font-weight:600;font-size:13px;opacity:.85;margin-top:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row2 > *{min-width:0}
+.tag{display:inline-block;font-size:12px;font-weight:800;padding:3px 8px;border-radius:999px;background:var(--purple2);color:#5346c4}
+.tag.记事{background:var(--coral2);color:#c24b30}
+.tag.写人{background:var(--pink2);color:#c43b6c}
+.tag.写景{background:var(--mint2);color:#0d7354}
+.tag.想象{background:var(--purple2);color:#5346c4}
+.tag.看图写话{background:var(--sun2);color:#9a6408}
+.tag.状物{background:#ffe8cc;color:#b85a00}
+.stepbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:4px 0 12px}
+.stepbar i{
+  display:block;text-align:center;font-style:normal;font-size:13px;font-weight:800;
+  background:rgba(255,255,255,.7);border-radius:12px;padding:8px 2px;color:var(--ink2);min-width:0;
+}
+.stepbar i.on{background:#fff;color:var(--purple);box-shadow:var(--shadow)}
+.stepbar i.done{color:var(--mint)}
+.ask{font-size:16px;background:#fff8ee;border-radius:16px;padding:12px;margin-bottom:10px}
+.qtitle{font-size:18px;font-weight:900;margin:6px 0}
+.choice{
+  display:block;width:100%;text-align:left;min-height:52px;margin:8px 0;padding:12px 14px;
+  border-radius:16px;background:#fff;border:3px solid transparent;
+  box-shadow:0 4px 0 rgba(62,42,74,.08);font-size:16.5px;line-height:1.5;font-weight:700;
+}
+.choice.bad{border-color:#f0b0a0;background:#fff6f3}
+.choice.good{border-color:#8ed9bf;background:#f1fff8}
+.choice:disabled{cursor:default}
+.why{
+  display:none;background:#fff3ec;border-radius:14px;padding:10px 12px;color:#8a4b38;
+  font-size:15px;margin-top:4px;
+}
+.why.show{display:block}
+.why.good{background:var(--mint2);color:#0d7354}
+.hint{color:var(--ink2);font-size:14px;margin:4px 0 8px}
+.field{margin:0 0 12px;min-width:0}
+.field label{display:block;font-weight:900;margin-bottom:4px}
+textarea{
+  display:block;width:100%;max-width:100%;resize:vertical;min-height:88px;
+  border:3px solid #eadfce;border-radius:16px;padding:12px;font-size:18px;line-height:1.7;background:#fff;
+}
+.starters{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{
+  min-height:44px;max-width:100%;padding:8px 12px;border-radius:999px;background:#fff;
+  border:2px solid #efe4f6;font-weight:700;font-size:14px;text-align:left;line-height:1.4;
+}
+.chip:active{background:var(--purple2)}
+.wbar{background:#fff;border-radius:18px;padding:10px 12px;box-shadow:var(--shadow);margin-bottom:12px}
+#wc{font-weight:900;font-size:18px}
+#wc b{color:var(--purple);font-size:26px}
+#wcHint{color:var(--ink2);font-size:13px}
+.sec-h{font-size:15px;font-weight:900;margin:8px 0}
+.pcount{color:var(--ink2);font-size:13px;font-weight:700}
+.bank{display:flex;flex-wrap:wrap;gap:8px}
+.tick{
+  display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
+  background:#fff;border-radius:16px;padding:12px;margin:8px 0;min-height:52px;
+  border:3px solid transparent;box-shadow:0 4px 0 rgba(62,42,74,.06);font-size:16px;font-weight:700;
+}
+.tick .box{
+  width:28px;height:28px;border-radius:8px;border:3px solid #e2d4ea;flex:none;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;
+}
+.tick.on{border-color:#b7ecd8;background:#f4fffb}
+.tick.on .box{background:var(--mint);border-color:var(--mint)}
+.list{display:grid;gap:10px}
+.draft{
+  display:block;width:100%;text-align:left;background:#fff;border-radius:18px;padding:14px;
+  box-shadow:var(--shadow);min-height:72px;
+}
+.draft b{display:block;font-size:18px}
+.draft span{color:var(--ink2);font-size:13px}
+.topic{
+  display:block;width:100%;text-align:left;background:#fff;border-radius:18px;padding:14px;
+  box-shadow:var(--shadow);min-height:72px;margin:0 0 10px;
+}
+.topic b{display:block;font-size:18px;margin:4px 0}
+.cat-h{font-weight:900;margin:14px 0 8px}
+.stem{background:#fff;border-radius:16px;padding:12px;font-size:17px;font-weight:700;box-shadow:var(--shadow)}
+.progress{color:var(--ink2);font-size:13px;font-weight:800}
+.picked{display:flex;gap:8px;align-items:flex-start;background:#f7f3ff;border-radius:14px;padding:8px 10px;margin:6px 0}
+.picked em{font-style:normal;font-weight:900;color:var(--purple);flex:none}
+.fig{margin:8px 0 12px}
+.fig svg{width:100%;height:auto;display:block;border-radius:16px}
+.empty{color:var(--ink2);padding:12px 0}
+.foot{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;margin-top:12px}
+.foot > *{min-width:0}
+.mascot{display:flex;gap:10px;align-items:center;margin:8px 0 4px}
+.mascot p{background:#fff;border-radius:16px;padding:10px 12px;box-shadow:var(--shadow);font-size:15px}
+#toast{
+  position:fixed;left:16px;right:16px;bottom:18px;z-index:30;
+  background:#3e2a4a;color:#fff;border-radius:16px;padding:12px 14px;
+  text-align:center;font-weight:800;opacity:0;pointer-events:none;transform:translateY(8px);transition:.2s;
+}
+#toast.show{opacity:1;transform:none}
+@media(min-width:900px){
+  .wrap{padding-top:22px}
+  .actions.home{grid-template-columns:1.3fr 1fr 1fr}
+  .topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .topic-grid .topic{margin:0}
+  .drill-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .write-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:14px;align-items:start}
+  .bank-col{position:sticky;top:12px}
+}
+@media(prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" role="status"></div>
+<script>
+/*DATA-START*/
+var DATA = {
+  "topics": [
+    {
+      "id": "t01",
+      "cat": "记事",
+      "title": "一件难忘的事",
+      "blurb": "只写一件事，把最记得的那个场面写清楚。",
+      "ask": "题目是“一件难忘的事”。它要你选出一件到现在还记得的事，写清经过和感受。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "把一天从早到晚都记下来",
+            "选一件让自己一直记得的事，写清楚",
+            "多写几件小事，用来凑字数"
+          ],
+          "ans": 1,
+          "why": [
+            "一天写下来容易变成流水账。题目里的“一件”要你挑最难忘的。",
+            "对，就锁住这一件，写细一点。",
+            "事情一多，每一件都写不细。先选最难忘的那件。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”来写，因为这是自己的事",
+            "用“你”来写，像在写信",
+            "用“他”来写，假装是别人的故事"
+          ],
+          "ans": 0,
+          "why": [
+            "难忘是自己的感受，用“我”最自然。",
+            "这不是写信。换成“我”，读者才知道是你亲身经历的。",
+            "写成“他”，就变成别人的故事了。感受是你自己的。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "只写最后的感想就够了",
+            "把时间、地点写得很长",
+            "重点写经过，尤其是最让你难忘的场面"
+          ],
+          "ans": 2,
+          "why": [
+            "感想要有，可是没有经过，感想就空空的。",
+            "时间地点点一下就行，不能占掉最重要的篇幅。",
+            "对，场面写具体，结尾的感受才站得住。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "那是上个学期的一个下午，在",
+            "记得那次，我和"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "直到现在，我还记得那天的",
+            "事情过去很久了，可我一闭上眼还能看见"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "一开始，谁也没有想到",
+            "刚开始的时候，"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "就在这个时候，",
+            "接着发生的事，让我"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "还有一个细节我一直记得：",
+            "旁边的人当时"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "这件事让我明白，",
+            "现在想起来，我仍然"
+          ]
+        }
+      ],
+      "words": [
+        "记忆犹新",
+        "恍如昨日",
+        "不知所措",
+        "心怦怦直跳",
+        "眼眶发热",
+        "破涕为笑",
+        "久久不能平静",
+        "那一幕"
+      ]
+    },
+    {
+      "id": "t02",
+      "cat": "记事",
+      "title": "那次，我真的很后悔",
+      "blurb": "写出自己做错的那一下，还有后来怎么面对。",
+      "ask": "题目是“那次，我真的很后悔”。要写清你做错了什么，当时怎么想，后来又做了什么。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写一件别人做错的事，用来提醒他",
+            "写自己做错并感到后悔的一件事",
+            "写很多条以后要遵守的规矩"
+          ],
+          "ans": 1,
+          "why": [
+            "主角是你自己，不是去批评别人。",
+            "对，这件事要是你亲身经历的，而且真的后悔。",
+            "规矩可以在结尾带一句，正文要写那件具体的事。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“大家”来写，不出现自己",
+            "用“他”把责任推开",
+            "用“我”写出自己的心里话"
+          ],
+          "ans": 2,
+          "why": [
+            "没有“我”，后悔就不知道是谁的了。",
+            "推开责任，就写不出真正的后悔。",
+            "对，心里话要用“我”来说。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "重点写做错的经过，和后来怎么补救",
+            "只反复写“我错了，我错了”",
+            "只写对方生了多大的气"
+          ],
+          "ans": 0,
+          "why": [
+            "经过和补救写清楚，读者才明白你为什么后悔。",
+            "空喊错了，读者还是不知道发生了什么。",
+            "对方的反应可以写一点，重点仍是你自己的选择。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "那是一个普通的晚上，在家里，",
+            "直到现在我还记得，当时在"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "有一句话，我到今天都不该说出口。",
+            "如果时间能退回去，我一定不会"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "事情是这样开始的：",
+            "我当时脱口而出："
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "说完以后，我看见",
+            "我本可以停下来，可是我又"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "后来我终于",
+            "那天夜里我一直在想"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "道歉说出口的时候，",
+            "这次后悔教会我，"
+          ]
+        }
+      ],
+      "words": [
+        "后悔莫及",
+        "满心愧疚",
+        "吞吞吐吐",
+        "不敢抬头",
+        "鼓起勇气",
+        "如释重负",
+        "轻声说",
+        "心里发紧"
+      ]
+    },
+    {
+      "id": "t03",
+      "cat": "状物",
+      "title": "我的心爱之物",
+      "blurb": "写一件你最宝贝的东西，写出样子和故事。",
+      "ask": "题目是“我的心爱之物”。要介绍那件物品的样子，还要写出它为什么对你重要。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写一件自己心爱的物品，以及和它有关的事",
+            "把自己所有的玩具都介绍一遍",
+            "写一件商店里很贵的东西，不必是自己的"
+          ],
+          "ans": 0,
+          "why": [
+            "选一件就够了，写深一点，别写成清单。",
+            "全都写到，每一件就都只剩一个名字。",
+            "心爱要是你自己的感情。别人的贵重物品不适合这篇。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用说明书的口气，完全不出现人",
+            "用“我”来写自己和这件物品",
+            "用“你”命令读者去买"
+          ],
+          "ans": 1,
+          "why": [
+            "没有人，就看不出你为什么爱它。",
+            "对，物品是你的，感情也要用“我”带出来。",
+            "这不是广告。读者想听的是你的故事。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "从它在工厂里怎么生产写起",
+            "重点写它的样子，和让你舍不得的那件事",
+            "只写它现在值多少钱"
+          ],
+          "ans": 1,
+          "why": [
+            "生产过程不是你的故事，读者也难有感受。",
+            "样子让人看见它，事情让人明白你的感情。",
+            "价钱不能说明你为什么爱它。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "说起我的心爱之物，那是",
+            "它陪着我，从"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "我的抽屉里，一直躺着",
+            "别人也许觉得它不起眼，可我"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "它看上去",
+            "我第一次得到它，是在"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "有一次，它陪我度过了",
+            "我总是小心地"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "它身上还有一个印记：",
+            "每当我看见它，就会想起"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "所以在我心里，它不只是",
+            "我愿一直好好保管它，因为"
+          ]
+        }
+      ],
+      "words": [
+        "爱不释手",
+        "闪闪发光",
+        "摸了又摸",
+        "小心翼翼",
+        "舍不得",
+        "陪伴着我",
+        "边角磨白",
+        "一看见它"
+      ]
+    },
+    {
+      "id": "t04",
+      "cat": "记事",
+      "title": "我学会了骑自行车",
+      "blurb": "写出不会、练习、终于会了的过程。",
+      "ask": "题目是“我学会了骑自行车”。要按顺序写出学习的过程，不能只报一个结果。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "介绍自行车是谁发明的",
+            "写自己怎样一步步学会骑自行车",
+            "比较各种车子的价钱"
+          ],
+          "ans": 1,
+          "why": [
+            "发明史不是这篇作文要写的事。",
+            "对，过程比结果更重要。",
+            "车子的价钱，和你怎么学会骑没有关系。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”写出自己的练习",
+            "用“骑车的人”这种泛称",
+            "用“你应该”来教别人骑车"
+          ],
+          "ans": 0,
+          "why": [
+            "亲身练习，用“我”最清楚。",
+            "泛称会把你自己的摔跤和坚持写丢。",
+            "这不是说明书，是你的经历。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "只写最后一天终于骑出去了",
+            "重点写不会的时候怎么练，会了又是什么感受",
+            "把家里每个人的自行车都描写一遍"
+          ],
+          "ans": 1,
+          "why": [
+            "只有结果，读者看不到你是怎么学会的。",
+            "不会、练习、会了，这三步都要有。",
+            "别人的车子会把文章带跑。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "那个暑假，在小区的空地上，",
+            "我学骑车的那些下午，"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "车把在我手里轻轻发抖。",
+            "谁能想到，我曾经连两米都骑不稳。"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "爸爸先扶着后座，我",
+            "第一次松手时，我"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "摔倒以后，膝盖",
+            "我咬咬牙，再试一次，"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "慢慢地，我发现",
+            "风从耳边过去的那一下，"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "当我自己骑到尽头时，",
+            "学会骑车以后我才懂，"
+          ]
+        }
+      ],
+      "words": [
+        "摇摇晃晃",
+        "紧紧抓住",
+        "摔了个跟头",
+        "膝盖火辣辣",
+        "咬咬牙",
+        "一次又一次",
+        "终于稳住",
+        "风从耳边过"
+      ]
+    },
+    {
+      "id": "t05",
+      "cat": "写人",
+      "title": "家里的那个人",
+      "blurb": "通过两三件小事，写出家人的特点。",
+      "ask": "题目是“家里的那个人”。你可以写妈妈、爸爸或长辈，用具体的小事表现这个人。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写一个人的身份证资料和生日",
+            "用几件小事写出家里一个人的特点",
+            "把家里每一个人都介绍一遍"
+          ],
+          "ans": 1,
+          "why": [
+            "资料像填表，读者看不出这个人什么样。",
+            "对，特点要靠事情来表现。",
+            "人一多，每个人都只能剩一个名字。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”来写自己看到的家人",
+            "全程用“你”质问对方",
+            "写成寓言，用人变成动物"
+          ],
+          "ans": 0,
+          "why": [
+            "你眼中的家人，用“我”来观察最真实。",
+            "质问不像写人，也容易只剩情绪。",
+            "这篇要写真实的家人，不是编童话。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "从他出生写到现在，一年不落",
+            "重点写最能表现他的两三件小事",
+            "只写身高、长相和穿着"
+          ],
+          "ans": 1,
+          "why": [
+            "一年不落就是流水账，特点出不来。",
+            "两三件小事就够把一个人写活。",
+            "外貌可以写一点，不能代替事情。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "在我家，每天早晚都能看见",
+            "记得那个下雨的晚上，"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "说起家里的那个人，我眼前先出现的是",
+            "他不大声说话，可是"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "有一次，我发烧了，他",
+            "平常最忙的时候，他仍然"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "还有一件小事：",
+            "我当时没有说谢谢，只是看见"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "他的手上",
+            "邻居们提起他，总会说"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "所以在我心里，他是",
+            "我想对他说，"
+          ]
+        }
+      ],
+      "words": [
+        "忙前忙后",
+        "轻手轻脚",
+        "眉头松开",
+        "忽然笑了",
+        "粗糙的手",
+        "一声不响",
+        "把热汤推过来",
+        "灯还亮着"
+      ]
+    },
+    {
+      "id": "t06",
+      "cat": "写人",
+      "title": "我的好朋友",
+      "blurb": "用相处的事写出朋友的特点，不要只写外貌。",
+      "ask": "题目是“我的好朋友”。要让读者从这个人做的事里，看出你们为什么是朋友。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写班上所有同学的名单",
+            "写一个朋友，并用事情表现他的特点",
+            "只写一次吵架，不写平常相处"
+          ],
+          "ans": 1,
+          "why": [
+            "名单不是作文。选一个朋友写深。",
+            "对，特点藏在你们一起做的事里。",
+            "吵架可以是其中一件事，不能只有争吵。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”来写我们之间的事",
+            "用“各位观众”像播报新闻",
+            "完全不写自己，只写对方的成绩单"
+          ],
+          "ans": 0,
+          "why": [
+            "朋友是两个人的事，里面要有“我”。",
+            "新闻播报的口气会把你们的感情冲掉。",
+            "没有相处，读者不知道你们为什么要好。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "重点写他的身高和穿着",
+            "把认识以来的每一天都写上",
+            "重点写一两件看出友情的事"
+          ],
+          "ans": 2,
+          "why": [
+            "外貌只能让人看见样子，看不见友情。",
+            "每一天都写，就又变成流水账了。",
+            "一两件典型的事，比十件空话有用。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "我和他做朋友，是从",
+            "那时候我们都在"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "他不是班上最会说话的人，可是",
+            "提到我的好朋友，我先想起"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "有一次我忘带橡皮，他",
+            "课间我们常常"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "我们也闹过别扭。那次",
+            "后来他先开口说"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "他还有一个小习惯：",
+            "一起值日的时候，"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "朋友不一定天天说漂亮话。",
+            "我珍惜这个朋友，是因为"
+          ]
+        }
+      ],
+      "words": [
+        "形影不离",
+        "微微一笑",
+        "把橡皮推过来",
+        "一起值日",
+        "悄悄说话",
+        "闹了别扭",
+        "又和好了",
+        "并肩走"
+      ]
+    },
+    {
+      "id": "t07",
+      "cat": "写人",
+      "title": "一位让我敬佩的人",
+      "blurb": "写出让你敬佩的具体做法，不要只说伟大。",
+      "ask": "题目是“一位让我敬佩的人”。敬佩要有理由，理由要是你看见的行动。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写一个你敬佩的人，并写出原因",
+            "写一位名人的百科资料",
+            "写自己哪里最了不起"
+          ],
+          "ans": 0,
+          "why": [
+            "原因要是具体的事，不能只贴标签。",
+            "百科资料不是你的观察。尽量写你真正了解的人。",
+            "这篇主角是你敬佩的那个人，不是自我介绍。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "只用口号，不出现人物",
+            "用“我”写自己看见的事，用名字写对方",
+            "用“你必须”教训读者"
+          ],
+          "ans": 1,
+          "why": [
+            "没有人物，敬佩就没有对象。",
+            "对，你来观察，他来行动。",
+            "教训读者会把文章写成说教。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "反复写“他很伟大”“他很厉害”",
+            "重点写他让你敬佩的具体做法",
+            "写他获得过多少奖状的清单"
+          ],
+          "ans": 1,
+          "why": [
+            "空话再多，读者还是不知道他做了什么。",
+            "一个具体的做法，胜过十句夸奖。",
+            "奖状可以提一句，不能代替事情。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "我敬佩的这个人，是",
+            "第一次注意到他，是在"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "真正让我敬佩的，不是一句夸奖。",
+            "他做事的样子，我一直记得。"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "那一次，别人都",
+            "他却一声不响地"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "后来我还看见",
+            "他反复做的一件小事是"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "我问他累不累，他",
+            "旁边有人笑他，他"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "从他身上我学到，",
+            "所以我敬佩的，其实是"
+          ]
+        }
+      ],
+      "words": [
+        "从不抱怨",
+        "一遍又一遍",
+        "汗湿了后背",
+        "认真较真",
+        "安静地做事",
+        "让我敬佩",
+        "默默坚持",
+        "想向他学"
+      ]
+    },
+    {
+      "id": "t08",
+      "cat": "写景",
+      "title": "校园的一角",
+      "blurb": "只写一个角落，按顺序写出看到和听到的。",
+      "ask": "题目是“校园的一角”。不是把整个学校都写到，而是选一个地方，按顺序观察。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写校园里的一个角落",
+            "把教学楼、操场、食堂全部写完",
+            "写一次考试的经过"
+          ],
+          "ans": 0,
+          "why": [
+            "一个角落写细，比整座学校点名更好。",
+            "全都写到，每一处就只能剩一句。",
+            "考试是记事，这篇要写的是景物。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”走过去，写出自己的观察",
+            "用“本文”这种论文口气",
+            "假装自己是一只从不出现的摄像头"
+          ],
+          "ans": 0,
+          "why": [
+            "观察要有眼睛，用“我”最自然。",
+            "论文口气不像五年级的写景。",
+            "完全隐藏自己，景物就少了感受。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "重点按顺序写这个角落的景物和声音",
+            "重点写学校的历史和建校年份",
+            "重点写同学们的考试分数"
+          ],
+          "ans": 0,
+          "why": [
+            "看到的、听到的、闻到的，按顺序写下来。",
+            "历史不是这幅画面的中心。",
+            "考试分数和这个角落的景色没有关系。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "课间，我走到校园的",
+            "清晨还没上课的时候，"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "校园里我最喜欢的一个角，藏在",
+            "如果不特意走过去，很难发现"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "先看见的是",
+            "站在那里，能听见"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "再往前几步，",
+            "风一吹，我闻到"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "地上还有",
+            "有时会有人经过，"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "上课铃响之前，我",
+            "这个小小的角落让我觉得，"
+          ]
+        }
+      ],
+      "words": [
+        "树荫凉凉",
+        "阳光斑驳",
+        "桂花香",
+        "朗朗读书声",
+        "宣传栏",
+        "花坛边",
+        "小鸟蹦",
+        "安静的角落"
+      ]
+    },
+    {
+      "id": "t09",
+      "cat": "写景",
+      "title": "秋天的公园",
+      "blurb": "抓住秋天的颜色、声音和气味。",
+      "ask": "题目是“秋天的公园”。要抓住秋天特有的景物，不要把春夏秋冬都写一遍。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写春天的花园",
+            "写冬天堆雪人",
+            "写秋天的公园里有什么景色"
+          ],
+          "ans": 2,
+          "why": [
+            "季节写错了，春天不是这篇的题目。",
+            "堆雪人是冬天的事，不是秋天的公园。",
+            "对，地点是公园，季节要看得出是秋天。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”在公园里走一走，看一看",
+            "用天气预报的口气报气温",
+            "用“古人曰”开头就不写公园了"
+          ],
+          "ans": 0,
+          "why": [
+            "一边走一边看，景色才有顺序。",
+            "报气温没有画面，读者看不见公园。",
+            "引用如果太长，公园本身就不见了。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "四个季节各写一段",
+            "重点写秋天才能看见、听见、闻到的东西",
+            "重点写公园的门票和地图"
+          ],
+          "ans": 1,
+          "why": [
+            "四季都写，秋天的特点就被冲淡了。",
+            "颜色、声音、气味，都是秋天的证据。",
+            "门票和地图不像眼前的秋天景色。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "一个秋日的下午，我和",
+            "风变凉的那天，我们去了"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "一进公园，脚下就响起",
+            "天空高高的，蓝得"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "小路两边，",
+            "我捡起一片"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "远远地，桂花",
+            "湖边有人在"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "阳光照在身上",
+            "归途上，"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "走出公园时，我的口袋里",
+            "原来秋天不是只有萧瑟，还有"
+          ]
+        }
+      ],
+      "words": [
+        "金黄金黄",
+        "凉丝丝",
+        "踩上去沙沙响",
+        "桂花甜甜的",
+        "蓝得透亮",
+        "远远近近",
+        "落叶打旋",
+        "秋高气爽"
+      ]
+    },
+    {
+      "id": "t10",
+      "cat": "写景",
+      "title": "雨中的街头",
+      "blurb": "写雨里的街景和行人，不是写下雨的科学知识。",
+      "ask": "题目是“雨中的街头”。要写出雨天街上的景象和人们的活动。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写雨中一条街上的景象和行人",
+            "写一篇关于雨水形成的说明文",
+            "写自己在家写作业的晚上"
+          ],
+          "ans": 0,
+          "why": [
+            "街景和行人才是这篇的画面。",
+            "说明文是讲知识，这篇要写你看见的雨。",
+            "人如果一直在家里，街头就没有了。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用实验报告的“首先、其次”",
+            "用“我”站在雨里或窗边观察",
+            "用“本店优惠”这种广告"
+          ],
+          "ans": 1,
+          "why": [
+            "实验报告的口气不像在写眼前的雨景。",
+            "有了观察的人，雨景才有立足点。",
+            "广告和雨中的街头没有关系。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "重点写云是怎么变成雨的",
+            "重点写雨中的声音、灯光和行人",
+            "重点写你明天要带哪件雨衣"
+          ],
+          "ans": 1,
+          "why": [
+            "形成原因是科学知识，不是眼前的画面。",
+            "声音、灯光、匆忙的人，能把雨天写活。",
+            "准备物品不是街头的景色。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "放学时雨忽然大了，我站在",
+            "那个下雨的傍晚，街上"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "雨点先打在伞面上，",
+            "整条街像被水洗过。"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "车灯",
+            "行人把伞"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "积水里倒映着",
+            "有人急匆匆地"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "我还听见",
+            "一家店铺的窗里"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "雨小一点的时候，",
+            "我喜欢这样的街头，因为"
+          ]
+        }
+      ],
+      "words": [
+        "淅淅沥沥",
+        "伞开花",
+        "积水反光",
+        "车灯拉长",
+        "急匆匆",
+        "雨幕",
+        "暖烘烘的窗",
+        "滴滴答答"
+      ]
+    },
+    {
+      "id": "t11",
+      "cat": "想象",
+      "title": "假如我有一支神笔",
+      "blurb": "想象要具体，写出用神笔做的两三件事。",
+      "ask": "题目是“假如我有一支神笔”。要想象这支笔能做什么，并写出你用它完成的具体事情。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "介绍毛笔的历史",
+            "想象自己有神笔以后会做哪些事",
+            "写一次真正发生过的画画课"
+          ],
+          "ans": 1,
+          "why": [
+            "毛笔的历史是说明，不是这篇想象作文。",
+            "对，想象要落到一件一件事上。",
+            "真实的画画课不是“假如”。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”进入这个想象",
+            "用“某同学”把自己摘出去",
+            "用实验数据证明神笔存在"
+          ],
+          "ans": 0,
+          "why": [
+            "愿望是你的，用“我”才真。",
+            "摘出去以后，读者不知道是谁的愿望。",
+            "神笔本来就是想象，不用假装做实验。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "只写“我有神笔真好”这句话",
+            "重点写用神笔画出的两三件具体的事",
+            "重点写笔杆是什么木头做的"
+          ],
+          "ans": 1,
+          "why": [
+            "只有感叹，想象还是空的。",
+            "两三件事写具体，幻想才站得住。",
+            "笔的材料可以一句带过，不是正文。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "假如这支笔此刻就在我手里，",
+            "夜深了，我对着空白的纸想："
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "要是想什么就能画出什么，我第一笔",
+            "我知道这是幻想，可我还是想"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "我先画",
+            "画完以后，眼前"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "接着我又画",
+            "这一笔是为了"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "我还想留给自己一笔：",
+            "画到最后，我停下来，因为"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "合上笔帽的时候，",
+            "就算没有神笔，我也可以"
+          ]
+        }
+      ],
+      "words": [
+        "要是真的",
+        "第一笔",
+        "会走路的",
+        "变成",
+        "睁开眼",
+        "幻想",
+        "心一下子热了",
+        "如果可以"
+      ]
+    },
+    {
+      "id": "t12",
+      "cat": "想象",
+      "title": "二十年后的我",
+      "blurb": "写一个具体的未来场面，不要只报职业。",
+      "ask": "题目是“二十年后的我”。要想象一个具体的日子，写出那时的你在做什么。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写一个二十年后的具体场面",
+            "写一篇职业大全",
+            "写现在的课程表"
+          ],
+          "ans": 0,
+          "why": [
+            "一个场面写清楚，比罗列更有画面。",
+            "职业可以是场面里的一部分，不能只有名单。",
+            "课程表是现在，不是二十年后。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”写未来的自己",
+            "用“该生”写一份鉴定",
+            "用“你们”对全班演讲人生道理"
+          ],
+          "ans": 0,
+          "why": [
+            "未来还是你，用“我”最顺。",
+            "鉴定表没有生活的细节，未来的一天看不见。",
+            "大道理太多，未来的一天就看不见了。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "重点写未来某一天里的事和心情",
+            "重点写二十年里每年的大事件",
+            "重点写现在同学的排名"
+          ],
+          "ans": 0,
+          "why": [
+            "一天里的行动和心情，能把未来写具体。",
+            "每年都写，就又变成大事记了。",
+            "现在的排名不是这篇的中心。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "二十年后的一个早晨，我",
+            "那时候我大概会在"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "镜子里的我，已经",
+            "如果现在的我能看见那一天，"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "那天我要做的第一件事是",
+            "工作的时候，我"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "中午或傍晚，我",
+            "我想起现在的自己，于是"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "回到家以后，",
+            "我也许仍然保留着一个习惯："
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "二十年前那个五年级的我，",
+            "不管变成什么样，我希望自己"
+          ]
+        }
+      ],
+      "words": [
+        "二十年后",
+        "忙碌而认真",
+        "依然认得",
+        "对现在的我说",
+        "轻轻微笑",
+        "那时候",
+        "想起今天",
+        "把手边的事做好"
+      ]
+    },
+    {
+      "id": "t13",
+      "cat": "看图写话",
+      "title": "雨里的一把伞",
+      "blurb": "看清图里是谁，再写成一个完整的小故事。",
+      "ask": "看图写话要先看清有谁、在哪里、在做什么。这幅图是下雨天，女孩把伞往老奶奶那边送。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "按图意写成一个完整的小故事",
+            "只给图画起一个名字",
+            "写一篇跟图画无关的日记"
+          ],
+          "ans": 0,
+          "why": [
+            "图意就是故事的依据，要写成一件事。",
+            "名字太短，看图写话要把经过写出来。",
+            "离开图画，就不是看图写话了。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用“我”代替图里的女孩",
+            "用第三人称写图里的女孩和老奶奶",
+            "用“你”直接教训老奶奶"
+          ],
+          "ans": 1,
+          "why": [
+            "把“我”写成图里的人，容易和图意打架。",
+            "对，就写图中的两个人。",
+            "教训别人不是这幅图的内容。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "女孩怎么把伞让过去，两人的动作和对话",
+            "只写雨下得有多大",
+            "只写老奶奶衣服的颜色"
+          ],
+          "ans": 0,
+          "why": [
+            "让伞的动作和对话，才是这幅图的中心。",
+            "雨是背景，不能占掉整篇。",
+            "颜色可以一句，不能代替事情。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "雨越下越大，街边站着",
+            "放学的路上，一位老奶奶"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "一把小伞在雨里停住了。",
+            "女孩看见老奶奶的肩膀湿了，"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "她把伞往那边倾了倾，说",
+            "老奶奶连忙摆手："
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "雨点打在",
+            "两个人只好一起"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "走到屋檐下时，",
+            "女孩的半边袖子"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "老奶奶笑着说，",
+            "这把伞不大，可是"
+          ]
+        }
+      ],
+      "words": [
+        "把伞倾斜",
+        "雨点打在肩上",
+        "连声道谢",
+        "皱纹里的笑",
+        "急忙让出",
+        "淋湿了一角",
+        "紧紧挨着",
+        "心里一暖"
+      ],
+      "fig": "<svg viewBox=\"0 0 360 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"下雨天，女孩把伞倾向老奶奶\"><rect width=\"360\" height=\"200\" rx=\"18\" fill=\"#d7ecff\"/><rect y=\"150\" width=\"360\" height=\"50\" fill=\"#c9d7c2\"/><g stroke=\"#79b4e3\" stroke-width=\"3\" stroke-linecap=\"round\"><line x1=\"30\" y1=\"16\" x2=\"22\" y2=\"36\"/><line x1=\"70\" y1=\"28\" x2=\"62\" y2=\"48\"/><line x1=\"120\" y1=\"12\" x2=\"112\" y2=\"32\"/><line x1=\"180\" y1=\"24\" x2=\"172\" y2=\"44\"/><line x1=\"240\" y1=\"14\" x2=\"232\" y2=\"34\"/><line x1=\"300\" y1=\"30\" x2=\"292\" y2=\"50\"/><line x1=\"330\" y1=\"18\" x2=\"322\" y2=\"38\"/></g><ellipse cx=\"118\" cy=\"78\" rx=\"78\" ry=\"28\" fill=\"#ff8aa8\"/><rect x=\"112\" y=\"78\" width=\"6\" height=\"70\" rx=\"3\" fill=\"#c46b84\"/><circle cx=\"150\" cy=\"118\" r=\"16\" fill=\"#ffd7b5\"/><rect x=\"138\" y=\"132\" width=\"26\" height=\"34\" rx=\"10\" fill=\"#7aa2ff\"/><circle cx=\"214\" cy=\"112\" r=\"16\" fill=\"#f3c7a5\"/><rect x=\"198\" y=\"126\" width=\"32\" height=\"40\" rx=\"12\" fill=\"#8fd0a4\"/><path d=\"M214 96 q18 18 8 36\" fill=\"none\" stroke=\"#eeeeee\" stroke-width=\"6\"/><text x=\"20\" y=\"188\" font-size=\"14\" fill=\"#3e2a4a\">女孩把伞往老奶奶那边送</text></svg>"
+    },
+    {
+      "id": "t14",
+      "cat": "看图写话",
+      "title": "散落一地的书",
+      "blurb": "写出书是怎么掉的，又是怎么一起捡起来的。",
+      "ask": "这幅图里，书本掉了一地，两个同学正蹲下去捡。看图写话要把前后经过补完整。",
+      "checks": [
+        {
+          "q": "题目要求写什么？",
+          "options": [
+            "写一篇买书的广告",
+            "写成两个同学捡书、帮忙的小故事",
+            "只数一数图里有几本书"
+          ],
+          "ans": 1,
+          "why": [
+            "买书广告不是图里正在发生的事。",
+            "对，捡书和帮忙就是这件事的中心。",
+            "数数没有故事，也看不出人物。"
+          ]
+        },
+        {
+          "q": "用第几人称来写？",
+          "options": [
+            "用第三人称写图里的两个同学",
+            "用“我”说自己就是图里唯一的人",
+            "用“本书定价”这种介绍"
+          ],
+          "ans": 0,
+          "why": [
+            "图里有两个人，用第三人称最好安排。",
+            "图里不是一个人，硬写成“我”会少掉另一个人。",
+            "书的定价和这幅图里的事没有关系。"
+          ]
+        },
+        {
+          "q": "重点应该写哪一部分？",
+          "options": [
+            "重点写书为什么掉落，以及两人怎么捡",
+            "重点写学校食堂吃什么",
+            "重点写其中一本书的出版说明"
+          ],
+          "ans": 0,
+          "why": [
+            "原因、动作、结果，这三步把图补成一个故事。",
+            "食堂吃什么不在这幅图里，会把故事写跑。",
+            "出版说明不是当时发生的事。"
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "key": "when",
+          "label": "时间、地点、人物",
+          "hint": "先用一句话写全：什么时候，在哪里，有谁。",
+          "starters": [
+            "下课铃刚响，走廊里",
+            "在教室门口，"
+          ]
+        },
+        {
+          "key": "open",
+          "label": "开头怎么引起",
+          "hint": "开头别把结果一下子说完。用一个画面、一句心里话，或一个问题把人引进来。",
+          "starters": [
+            "哗的一下，书本散了一地。",
+            "谁也没站稳，怀里的书滑了出去。"
+          ]
+        },
+        {
+          "key": "mid1",
+          "label": "中间第一件（或第一个细节）",
+          "hint": "按顺序写。先写第一步，加上动作或对话，让人看见。",
+          "starters": [
+            "旁边的同学愣了一下，马上",
+            "他一边说没关系，一边"
+          ]
+        },
+        {
+          "key": "mid2",
+          "label": "中间第二件（或第二个细节）",
+          "hint": "再写后面发生的事。写人就写第二件小事，写景就换一个看到的细节。",
+          "starters": [
+            "两人蹲在地上，",
+            "有一本滑到了远处，"
+          ]
+        },
+        {
+          "key": "mid3",
+          "label": "中间还可以写的细节",
+          "hint": "还想再写一个细节就写在这里。觉得够了可以空着。",
+          "starters": [
+            "捡齐以后，他们",
+            "拍掉封面上的灰时，"
+          ]
+        },
+        {
+          "key": "end",
+          "label": "结尾感受",
+          "hint": "回到开头的人或物，用一两句写出感受，不要另起一个新故事。",
+          "starters": [
+            "相视一笑的时候，",
+            "帮助有时就是弯一次腰。"
+          ]
+        }
+      ],
+      "words": [
+        "散落一地",
+        "连忙蹲下",
+        "一本一本",
+        "不好意思",
+        "相视一笑",
+        "帮着捡起",
+        "拍掉灰尘",
+        "又整齐了"
+      ],
+      "fig": "<svg viewBox=\"0 0 360 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"两个同学蹲下去捡散落的书\"><rect width=\"360\" height=\"200\" rx=\"18\" fill=\"#fff6e8\"/><rect y=\"146\" width=\"360\" height=\"54\" fill=\"#f0d8b0\"/><circle cx=\"92\" cy=\"108\" r=\"16\" fill=\"#ffd7b5\"/><rect x=\"76\" y=\"122\" width=\"34\" height=\"28\" rx=\"10\" fill=\"#ffb4c8\"/><circle cx=\"168\" cy=\"104\" r=\"16\" fill=\"#f3c7a5\"/><rect x=\"152\" y=\"118\" width=\"34\" height=\"30\" rx=\"10\" fill=\"#8eb6ff\"/><g fill=\"#6c8cff\"><rect x=\"210\" y=\"132\" width=\"34\" height=\"22\" rx=\"3\" transform=\"rotate(-18 210 132)\"/><rect x=\"248\" y=\"140\" width=\"36\" height=\"20\" rx=\"3\" transform=\"rotate(12 248 140)\" fill=\"#ff8f70\"/><rect x=\"230\" y=\"150\" width=\"30\" height=\"18\" rx=\"3\" fill=\"#ffd15c\"/></g><text x=\"20\" y=\"188\" font-size=\"14\" fill=\"#3e2a4a\">书本掉了一地，两个人一起捡</text></svg>"
+    }
+  ],
+  "drills": [
+    {
+      "id": "s01",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "小狗跑过来。",
+      "options": [
+        "小狗跑过来。",
+        "一只黄白相间的小狗摇着尾巴，飞快地朝我跑过来。",
+        "小狗非常非常地跑过来了。"
+      ],
+      "answer": 1,
+      "why": [
+        "这句还是原来那样，看不出小狗什么样。",
+        "",
+        "加了“非常”，还是不知道颜色和动作。"
+      ],
+      "explain": "具体要写出颜色、动作和速度。只加“非常”，画面还是空的。",
+      "must": [
+        "黄白",
+        "摇着尾巴",
+        "飞快"
+      ]
+    },
+    {
+      "id": "s02",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "花开了。",
+      "options": [
+        "花开了。",
+        "花真的开了。",
+        "窗台上的茉莉花开了，白瓣上还沾着一点露水。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句太笼统，不知道是什么花。",
+        "加了“真的”，还是看不见花的样子。",
+        ""
+      ],
+      "explain": "写出地方、花名和露水，读者才能看见那盆花。",
+      "must": [
+        "茉莉",
+        "白瓣",
+        "露水"
+      ]
+    },
+    {
+      "id": "s03",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "妈妈做晚饭。",
+      "options": [
+        "妈妈系着围裙，把青椒切成细丝，油锅里滋滋地响。",
+        "妈妈在厨房做晚饭。",
+        "妈妈很认真地做晚饭。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "只加了地点，还是不知道她在做什么菜。",
+        "“认真”是评价，不是能看见的动作。"
+      ],
+      "explain": "围裙、青椒和油锅的声音，都是能看见、能听见的细节。",
+      "must": [
+        "围裙",
+        "青椒",
+        "滋滋"
+      ]
+    },
+    {
+      "id": "s04",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "教室很安静。",
+      "options": [
+        "教室很安静。",
+        "教室安静得能听见铅笔在本子上沙沙地走。",
+        "教室非常安静，安静极了。"
+      ],
+      "answer": 1,
+      "why": [
+        "这句只下了结论，没有声音。",
+        "",
+        "重复“安静”，还是听不见教室里有什么。"
+      ],
+      "explain": "用一种很小的声音来衬安静，比连说两遍“安静”更清楚。",
+      "must": [
+        "铅笔",
+        "沙沙"
+      ]
+    },
+    {
+      "id": "s05",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "下雨了。",
+      "options": [
+        "下雨了，雨很大。",
+        "天下雨了。",
+        "豆大的雨点打在伞面上，噼噼啪啪，地上很快起了一层水花。"
+      ],
+      "answer": 2,
+      "why": [
+        "“很大”仍然看不见雨点什么样。",
+        "这句几乎没有增加内容。",
+        ""
+      ],
+      "explain": "大小、声音和地上的变化都写到了，雨才下在读者眼前。",
+      "must": [
+        "豆大",
+        "噼噼啪啪",
+        "水花"
+      ]
+    },
+    {
+      "id": "s06",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "他跑得很快。",
+      "options": [
+        "他像一阵风似的冲过操场，红领巾都飘了起来。",
+        "他跑得很快很快。",
+        "他跑得真快。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "叠一次“很快”，还是看不见人。",
+        "“真快”仍是一句评价。"
+      ],
+      "explain": "比喻加上红领巾飘起来，速度就有了画面。",
+      "must": [
+        "一阵风",
+        "红领巾"
+      ]
+    },
+    {
+      "id": "s07",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "蛋糕很好吃。",
+      "options": [
+        "蛋糕很好吃。",
+        "一口咬下去软软的，奶香混着草莓的味道。",
+        "蛋糕又甜又好吃。"
+      ],
+      "answer": 1,
+      "why": [
+        "这句只有评价，没有味道。",
+        "",
+        "“甜”和“好吃”还是笼统的感觉。"
+      ],
+      "explain": "软硬、香味和水果都写出来，别人才像真的尝到了。",
+      "must": [
+        "软软的",
+        "奶香",
+        "草莓"
+      ]
+    },
+    {
+      "id": "s08",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "公园里人很多。",
+      "options": [
+        "公园里人很多。",
+        "公园里有很多人。",
+        "公园长椅上坐着下棋的爷爷，草坪边还有追气球的小孩。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句只说了结论。",
+        "换了个说法，人还是看不见。",
+        ""
+      ],
+      "explain": "写出不同的人在做什么，比只说“很多”清楚。",
+      "must": [
+        "下棋",
+        "气球"
+      ]
+    },
+    {
+      "id": "s09",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "我很高兴。",
+      "options": [
+        "我高兴得一蹦三尺高，话都说不利索了。",
+        "我很高兴。",
+        "我非常高兴，特别高兴。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "这句没有动作，看不出高兴成什么样。",
+        "两个程度词叠在一起，还是没有样子。"
+      ],
+      "explain": "用动作和说话的样子表现高兴，比直说“高兴”更真。",
+      "must": [
+        "一蹦三尺高",
+        "说不利索"
+      ]
+    },
+    {
+      "id": "s10",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "雪下了。",
+      "options": [
+        "雪下了。",
+        "雪花落在袖口上，一会儿就化成一小滴水。",
+        "雪下得很大很大。"
+      ],
+      "answer": 1,
+      "why": [
+        "这句没有写出雪花的样子。",
+        "",
+        "“很大”重复一遍，雪还是抽象的。"
+      ],
+      "explain": "落在哪里、后来变成什么，都是眼睛能看到的。",
+      "must": [
+        "袖口",
+        "一小滴"
+      ]
+    },
+    {
+      "id": "s11",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "弟弟哭了。",
+      "options": [
+        "弟弟哭了。",
+        "弟弟哭得很伤心。",
+        "弟弟委屈地扁着嘴，眼泪在眼眶里打转，就是不肯出声。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句只有一个结果，看不出弟弟的脸。",
+        "“伤心”是结论，脸和声音都没有。",
+        ""
+      ],
+      "explain": "嘴、眼泪和不肯出声，把委屈写具体了。",
+      "must": [
+        "扁着嘴",
+        "打转",
+        "不肯出声"
+      ]
+    },
+    {
+      "id": "s12",
+      "kind": "specific",
+      "prompt": "哪一句写得更具体？",
+      "stem": "晚上的路很黑。",
+      "options": [
+        "晚上的路很黑。",
+        "路灯把我们的影子拉得老长，远处的窗户还亮着暖暖的光。",
+        "晚上路非常黑。"
+      ],
+      "answer": 1,
+      "why": [
+        "这句没有光，也没有影子。",
+        "",
+        "只加“非常”，路还是一片黑。"
+      ],
+      "explain": "有了影子和远处的光，黑才被衬托出来。",
+      "must": [
+        "影子",
+        "拉得老长",
+        "暖暖"
+      ]
+    },
+    {
+      "id": "e01",
+      "kind": "expand",
+      "prompt": "原句是“妈妈笑了。”哪一句扩得更好？",
+      "stem": "妈妈笑了。",
+      "options": [
+        "妈妈笑了笑了。",
+        "妈妈眼睛弯成月牙，轻轻笑出了声。",
+        "妈妈真的笑了。"
+      ],
+      "answer": 1,
+      "why": [
+        "同一句说了两遍，并没有增加样子。",
+        "",
+        "“真的”不能让人看见她怎么笑。"
+      ],
+      "explain": "扩句要加上表情或声音。月牙眼和笑声，比重复原句好。",
+      "must": [
+        "月牙",
+        "笑出了声"
+      ]
+    },
+    {
+      "id": "e02",
+      "kind": "expand",
+      "prompt": "原句是“小鸟飞走了。”哪一句扩得更好？",
+      "stem": "小鸟飞走了。",
+      "options": [
+        "一只灰褐色的小鸟拍拍翅膀，一下子飞进了树丛。",
+        "小鸟飞走了，飞走了。",
+        "小鸟很快地飞走了。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "重复一遍，鸟的样子还是没有。",
+        "“很快”没有写出颜色和去向。"
+      ],
+      "explain": "颜色、动作和飞去的地方都补上了，句子才丰满。",
+      "must": [
+        "灰褐色",
+        "树丛"
+      ]
+    },
+    {
+      "id": "e03",
+      "kind": "expand",
+      "prompt": "原句是“我打开书包。”哪一句扩得更好？",
+      "stem": "我打开书包。",
+      "options": [
+        "我把书包打开了。",
+        "我轻轻地打开了书包。",
+        "我拉开书包拉链，抽出那本画满记号的语文书。"
+      ],
+      "answer": 2,
+      "why": [
+        "只是把字序换了一下。",
+        "“轻轻”仍然不知道拿出了什么。",
+        ""
+      ],
+      "explain": "好的扩句会告诉读者打开以后看见了什么。",
+      "must": [
+        "拉链",
+        "记号"
+      ]
+    },
+    {
+      "id": "e04",
+      "kind": "expand",
+      "prompt": "原句是“风吹过来。”哪一句扩得更好？",
+      "stem": "风吹过来。",
+      "options": [
+        "风吹过来了。",
+        "风带着桂花的甜味，把我的刘海吹得痒痒的。",
+        "一阵风吹了过来。"
+      ],
+      "answer": 1,
+      "why": [
+        "只加了“了”，内容几乎没变。",
+        "",
+        "“一阵”没有味道，也没有吹到谁。"
+      ],
+      "explain": "气味和吹到刘海的感觉，让风变得具体。",
+      "must": [
+        "桂花",
+        "刘海"
+      ]
+    },
+    {
+      "id": "e05",
+      "kind": "expand",
+      "prompt": "原句是“他低下头。”哪一句扩得更好？",
+      "stem": "他低下头。",
+      "options": [
+        "他耳根红红的，慢慢低下头，手指绞着衣角。",
+        "他把头低下去。",
+        "他低低地低下了头。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "这句和原句差不多，没有心情。",
+        "“低低地低下”有些重复，样子仍不清楚。"
+      ],
+      "explain": "耳根和衣角写出了不好意思，这才是扩句。",
+      "must": [
+        "耳根",
+        "衣角"
+      ]
+    },
+    {
+      "id": "e06",
+      "kind": "expand",
+      "prompt": "原句是“水开了。”哪一句扩得更好？",
+      "stem": "水开了。",
+      "options": [
+        "水已经开了。",
+        "水开了，开得很厉害。",
+        "壶嘴里冒出白气，壶盖被顶得轻轻跳动。"
+      ],
+      "answer": 2,
+      "why": [
+        "“已经”没有画面。",
+        "“厉害”看不出水开的样子。",
+        ""
+      ],
+      "explain": "白气和跳动的壶盖，是水开时能看见的现象。",
+      "must": [
+        "白气",
+        "壶盖"
+      ]
+    },
+    {
+      "id": "e07",
+      "kind": "expand",
+      "prompt": "原句是“爷爷说话了。”哪一句扩得更好？",
+      "stem": "爷爷说话了。",
+      "options": [
+        "爷爷说话了。",
+        "爷爷咳嗽一声，慢吞吞地说，声音又低又哑。",
+        "爷爷开始说话了。"
+      ],
+      "answer": 1,
+      "why": [
+        "这句就是原句，没有扩开。",
+        "",
+        "“开始”并没有写出声音的样子。"
+      ],
+      "explain": "先写动作，再写快慢和音质，人物就站出来了。",
+      "must": [
+        "慢吞吞",
+        "又低又哑"
+      ]
+    },
+    {
+      "id": "e08",
+      "kind": "expand",
+      "prompt": "原句是“叶子落下来。”哪一句扩得更好？",
+      "stem": "叶子落下来。",
+      "options": [
+        "一片黄叶子打着旋儿，落在我的手心里。",
+        "叶子落下来了。",
+        "很多叶子落了下来。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "这句几乎还是原句，叶子的样子没有补上。",
+        "数量变了，叶子的样子和落点仍没有。"
+      ],
+      "explain": "颜色、落下的姿态和落在哪里，都是好的补充。",
+      "must": [
+        "打着旋儿",
+        "手心"
+      ]
+    },
+    {
+      "id": "e09",
+      "kind": "expand",
+      "prompt": "原句是“我等着妈妈。”哪一句扩得更好？",
+      "stem": "我等着妈妈。",
+      "options": [
+        "我在等妈妈。",
+        "我很认真地等着妈妈。",
+        "我趴在窗边，数着楼下经过的自行车，等妈妈的红围巾出现。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句只是缩短，不是扩充。",
+        "“认真”看不出人在做什么。",
+        ""
+      ],
+      "explain": "地点、动作和等待的标记都有了，等待就具体了。",
+      "must": [
+        "红围巾",
+        "自行车"
+      ]
+    },
+    {
+      "id": "e10",
+      "kind": "expand",
+      "prompt": "原句是“灯灭了。”哪一句扩得更好？",
+      "stem": "灯灭了。",
+      "options": [
+        "灯灭掉了。",
+        "教室的灯一下子灭了，只剩走廊里一线昏黄的光。",
+        "灯忽然灭了。"
+      ],
+      "answer": 1,
+      "why": [
+        "换了个说法，画面没有增加。",
+        "",
+        "“忽然”只写了速度，没写周围变成什么样。"
+      ],
+      "explain": "写出哪里的灯，以及灭了以后还剩下什么光。",
+      "must": [
+        "走廊",
+        "昏黄"
+      ]
+    },
+    {
+      "id": "b01",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "我大约大概八岁了。",
+      "options": [
+        "我大约八岁了。",
+        "我大约大概八岁左右了。",
+        "大约大概，我八岁了。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "“左右”又和“大约”叠在一起了。",
+        "词语换了位置，重复还在。"
+      ],
+      "explain": "这是重复啰嗦。“大约”和“大概”意思一样，留下一个就行。改好的句子是：我大约八岁了。",
+      "type": "重复啰嗦",
+      "bad": [
+        "大约大概"
+      ],
+      "good": "大约八岁",
+      "fixed": "我大约八岁了。"
+    },
+    {
+      "id": "b02",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "他亲自自己做了一只风筝。",
+      "options": [
+        "他亲自自己亲手做了一只风筝。",
+        "他亲自做了一只风筝。",
+        "亲自自己，他做了一只风筝。"
+      ],
+      "answer": 1,
+      "why": [
+        "“亲手”还是和“亲自”重复。",
+        "",
+        "只是把重复的词挪到了前面。"
+      ],
+      "explain": "这是重复啰嗦。“亲自”和“自己”留一个就够了。改好的句子是：他亲自做了一只风筝。",
+      "type": "重复啰嗦",
+      "bad": [
+        "亲自自己"
+      ],
+      "good": "亲自做了一只风筝",
+      "fixed": "他亲自做了一只风筝。"
+    },
+    {
+      "id": "b03",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "通过这次拔河比赛，使我们班更团结了。",
+      "options": [
+        "通过这次拔河比赛，使我们班更加团结了。",
+        "通过这次拔河比赛，使同学们更团结了。",
+        "这次拔河比赛使我们班更团结了。"
+      ],
+      "answer": 2,
+      "why": [
+        "“通过……使……”套在一起，句子仍缺主语。",
+        "换了后面的人，缺主语的问题还在。",
+        ""
+      ],
+      "explain": "这是成分残缺。“通过”和“使”叠用，句子就没有主语了。改好的句子是：这次拔河比赛使我们班更团结了。",
+      "type": "成分残缺",
+      "bad": [
+        "通过这次拔河比赛，使"
+      ],
+      "good": "这次拔河比赛使我们班更团结了",
+      "fixed": "这次拔河比赛使我们班更团结了。"
+    },
+    {
+      "id": "b04",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "我们要养成爱护环境。",
+      "options": [
+        "我们要养成爱护环境了。",
+        "我们要养成爱护环境。",
+        "我们要养成爱护环境的习惯。"
+      ],
+      "answer": 2,
+      "why": [
+        "加了“了”，后面仍然缺了养成的对象。",
+        "这句还是原来的病句，宾语不完整。",
+        ""
+      ],
+      "explain": "这是成分残缺。“养成”后面要有“习惯”这样的词语。改好的句子是：我们要养成爱护环境的习惯。",
+      "type": "成分残缺",
+      "bad": [
+        "养成爱护环境。",
+        "养成爱护环境了"
+      ],
+      "good": "养成爱护环境的习惯",
+      "fixed": "我们要养成爱护环境的习惯。"
+    },
+    {
+      "id": "b05",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "看了这部动画片，受到了很大的启发。",
+      "options": [
+        "看了这部动画片，受到了更大的启发。",
+        "看了这部动画片，我受到了很大的启发。",
+        "看了这部动画片，受到了很大的启发呀。"
+      ],
+      "answer": 1,
+      "why": [
+        "程度换了，还是不知道谁受到启发。",
+        "",
+        "加了语气词，主语仍然没有出现。"
+      ],
+      "explain": "这是成分残缺。谁受到启发，句子里要写出来。改好的句子是：看了这部动画片，我受到了很大的启发。",
+      "type": "成分残缺",
+      "bad": [
+        "看了这部动画片，受到"
+      ],
+      "good": "我受到了很大的启发",
+      "fixed": "看了这部动画片，我受到了很大的启发。"
+    },
+    {
+      "id": "b06",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "我的成绩明显改进了。",
+      "options": [
+        "我的成绩明显改进了。",
+        "我的成绩明显改进很多了。",
+        "我的成绩明显提高了。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句就是原句，搭配没有改。",
+        "“很多”不能挽救“成绩”和“改进”的搭配。",
+        ""
+      ],
+      "explain": "这是搭配不当。成绩可以说提高，不说改进。改好的句子是：我的成绩明显提高了。",
+      "type": "搭配不当",
+      "bad": [
+        "成绩明显改进"
+      ],
+      "good": "成绩明显提高",
+      "fixed": "我的成绩明显提高了。"
+    },
+    {
+      "id": "b07",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "老师表扬了班上的好人好事。",
+      "options": [
+        "老师大大地表扬了班上的好人好事。",
+        "老师表扬了做好事的同学。",
+        "老师又表扬了班上的好人好事。"
+      ],
+      "answer": 1,
+      "why": [
+        "加了“大大地”，表扬的对象仍然不合适。",
+        "",
+        "“又”没有改变搭配。"
+      ],
+      "explain": "这是搭配不当。表扬的是人，好事可以说赞扬或肯定。改好的句子是：老师表扬了做好事的同学。",
+      "type": "搭配不当",
+      "bad": [
+        "表扬了班上的好人好事"
+      ],
+      "good": "表扬了做好事的同学",
+      "fixed": "老师表扬了做好事的同学。"
+    },
+    {
+      "id": "b08",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "他的眼睛里充满了希望的心情。",
+      "options": [
+        "他的眼睛里充满了希望的心情啊。",
+        "充满了希望的心情，在他的眼睛里。",
+        "他的眼睛里充满了希望。"
+      ],
+      "answer": 2,
+      "why": [
+        "语气词没有去掉搭配问题。",
+        "语序换了，“希望的心情”仍然不通。",
+        ""
+      ],
+      "explain": "这是搭配不当。眼睛里可以充满希望，不说充满心情。改好的句子是：他的眼睛里充满了希望。",
+      "type": "搭配不当",
+      "bad": [
+        "希望的心情"
+      ],
+      "good": "充满了希望。",
+      "fixed": "他的眼睛里充满了希望。"
+    },
+    {
+      "id": "b09",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "我们讨论并听取了校长的报告。",
+      "options": [
+        "我们认真讨论并听取了校长的报告。",
+        "我们听取并讨论了校长的报告。",
+        "讨论并听取了校长的报告，我们。"
+      ],
+      "answer": 1,
+      "why": [
+        "加了“认真”，先后顺序还是反的。",
+        "",
+        "人放到句尾，不合理的顺序仍在。"
+      ],
+      "explain": "这是语序不当。要先听取，再讨论。改好的句子是：我们听取并讨论了校长的报告。",
+      "type": "语序不当",
+      "bad": [
+        "讨论并听取"
+      ],
+      "good": "听取并讨论",
+      "fixed": "我们听取并讨论了校长的报告。"
+    },
+    {
+      "id": "b10",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "博物馆里展出了两千多年前新出土的陶器。",
+      "options": [
+        "博物馆里展出了两千多年前新出土的陶器。",
+        "博物馆里终于展出了两千多年前新出土的陶器。",
+        "博物馆里展出了新出土的两千多年前的陶器。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句就是原句，时间关系是乱的。",
+        "加了“终于”，还是像两千多年前才出土。",
+        ""
+      ],
+      "explain": "这是语序不当。陶器是两千多年前的，出土是现在的事。改好的句子是：博物馆里展出了新出土的两千多年前的陶器。",
+      "type": "语序不当",
+      "bad": [
+        "两千多年前新出土"
+      ],
+      "good": "新出土的两千多年前的陶器",
+      "fixed": "博物馆里展出了新出土的两千多年前的陶器。"
+    },
+    {
+      "id": "b11",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "虽然今天下雨，所以我们还是去公园。",
+      "options": [
+        "虽然今天下雨，所以我们还是去了公园。",
+        "虽然今天下雨，但是我们还是去公园。",
+        "所以虽然今天下雨，所以我们还是去公园。"
+      ],
+      "answer": 1,
+      "why": [
+        "“虽然”不能跟“所以”配对。",
+        "",
+        "前后都用“所以”，关联词更乱了。"
+      ],
+      "explain": "这是关联词用错了。“虽然”要和“但是”一起用。改好的句子是：虽然今天下雨，但是我们还是去公园。",
+      "type": "关联词",
+      "bad": [
+        "虽然今天下雨，所以"
+      ],
+      "good": "虽然今天下雨，但是",
+      "fixed": "虽然今天下雨，但是我们还是去公园。"
+    },
+    {
+      "id": "b12",
+      "kind": "sick",
+      "prompt": "原句有语病。哪一句改得对？",
+      "stem": "只要认真听讲，才能把课听懂。",
+      "options": [
+        "只要认真听讲，才能把课听懂。",
+        "只要认真听讲，才能够把课听懂。",
+        "只要认真听讲，就能把课听懂。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句就是原句，“只要”不和“才”配对。",
+        "“才能够”里仍旧是“才”。",
+        ""
+      ],
+      "explain": "这是关联词用错了。“只要”后面用“就”，“只有”才用“才”。改好的句子是：只要认真听讲，就能把课听懂。",
+      "type": "关联词",
+      "bad": [
+        "只要认真听讲，才"
+      ],
+      "good": "只要认真听讲，就",
+      "fixed": "只要认真听讲，就能把课听懂。"
+    },
+    {
+      "id": "o01",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "星期天早上，我决定在阳台种一盆太阳花。",
+        "我先把小花盆洗干净，再装上松软的土。",
+        "接着用手指在土里挖了一个小坑，把种子放进去。",
+        "然后轻轻盖上一层土，浇了少量的水。",
+        "我在心里说，小种子你要快快长大呀。"
+      ],
+      "shuffle": [
+        2,
+        0,
+        4,
+        1,
+        3
+      ],
+      "before": [
+        [
+          "决定在阳台",
+          "洗干净"
+        ],
+        [
+          "洗干净",
+          "挖了一个小坑"
+        ],
+        [
+          "挖了一个小坑",
+          "盖上一层土"
+        ],
+        [
+          "盖上一层土",
+          "快快长大"
+        ]
+      ],
+      "explain": "先写决定种，再写洗盆、挖坑、盖土，最后写心里的话。",
+      "why": []
+    },
+    {
+      "id": "o02",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "放学时我站在屋檐下，看着忽然下起来的雨。",
+        "门卫爷爷把一把旧伞递到我手里。",
+        "我撑开伞，踩着积水往家走。",
+        "到了单元门口，我把伞收好，水滴在垫子外面。",
+        "晚上我写了一张字条，明天要把伞送回去。"
+      ],
+      "shuffle": [
+        1,
+        4,
+        0,
+        2,
+        3
+      ],
+      "before": [
+        [
+          "屋檐下",
+          "旧伞递到"
+        ],
+        [
+          "旧伞递到",
+          "撑开伞"
+        ],
+        [
+          "撑开伞",
+          "水滴在垫子"
+        ],
+        [
+          "水滴在垫子",
+          "一张字条"
+        ]
+      ],
+      "explain": "先写被雨困住，再写借伞、撑伞、到家，最后写想着送还。",
+      "why": []
+    },
+    {
+      "id": "o03",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "课间我蹲在花坛边，看见一队蚂蚁。",
+        "它们抬着一块面包屑，慢慢爬过砖缝。",
+        "面包屑卡住了，两只蚂蚁又来帮忙顶。",
+        "上课铃响了，我只好记住这个地方，下次再来看。"
+      ],
+      "shuffle": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "before": [
+        [
+          "一队蚂蚁",
+          "一块面包屑"
+        ],
+        [
+          "一块面包屑",
+          "又来帮忙"
+        ],
+        [
+          "又来帮忙",
+          "上课铃"
+        ]
+      ],
+      "explain": "先看见蚂蚁，再写它们搬运、互相帮忙，最后用上课铃收住。",
+      "why": []
+    },
+    {
+      "id": "o04",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "老师宣布，明天班会让我发言。",
+        "晚上我对着镜子把稿子念了三遍，手心全是汗。",
+        "第二天站上讲台，台下的脸一下子变得模糊。",
+        "我深吸一口气，从第一句开始，声音渐渐稳了。",
+        "走下讲台时，同桌朝我偷偷比了个赞。"
+      ],
+      "shuffle": [
+        3,
+        0,
+        4,
+        1,
+        2
+      ],
+      "before": [
+        [
+          "明天班会",
+          "对着镜子"
+        ],
+        [
+          "对着镜子",
+          "站上讲台"
+        ],
+        [
+          "站上讲台",
+          "深吸一口气"
+        ],
+        [
+          "深吸一口气",
+          "比了个赞"
+        ]
+      ],
+      "explain": "按时间排：先接到任务，再练习，再上台，再说完，最后下台。",
+      "why": []
+    },
+    {
+      "id": "o05",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "周末奶奶说，今天我们自己包饺子。",
+        "我先帮着拌馅，肉香混着白菜的清甜。",
+        "奶奶擀好皮，我学着把馅放在正中间。",
+        "我一捏，饺子却成了歪歪扭扭的小船。",
+        "奶奶手把手教我，边缘要捏紧才不会漏。",
+        "下锅以后，我吃到自己包的那一只，烫，可是特别香。"
+      ],
+      "shuffle": [
+        4,
+        1,
+        0,
+        5,
+        2,
+        3
+      ],
+      "before": [
+        [
+          "自己包饺子",
+          "帮着拌馅"
+        ],
+        [
+          "帮着拌馅",
+          "放在正中间"
+        ],
+        [
+          "放在正中间",
+          "歪歪扭扭"
+        ],
+        [
+          "歪歪扭扭",
+          "捏紧才不会"
+        ],
+        [
+          "捏紧才不会",
+          "特别香"
+        ]
+      ],
+      "explain": "按包饺子的步骤排：决定、拌馅、放馅、捏坏、学捏、品尝。",
+      "why": []
+    },
+    {
+      "id": "o06",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "周五放学，值日生只剩我和同桌。",
+        "我们先把椅子翻到桌上，再扫地面的纸屑。",
+        "扫完又用湿布把黑板擦得能照见人。",
+        "关灯锁门时，教室干干净净，我们相视一笑。"
+      ],
+      "shuffle": [
+        1,
+        3,
+        0,
+        2
+      ],
+      "before": [
+        [
+          "值日生",
+          "翻到桌上"
+        ],
+        [
+          "翻到桌上",
+          "黑板擦得"
+        ],
+        [
+          "黑板擦得",
+          "相视一笑"
+        ]
+      ],
+      "explain": "先交代只剩两个人，再扫地、擦黑板，最后锁门离开。",
+      "why": []
+    },
+    {
+      "id": "o07",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "爸爸叫醒我时，天还是深蓝色的。",
+        "我们骑车到江边，找了一块干石头坐下。",
+        "天边先裂开一条粉红，云被慢慢染亮。",
+        "太阳跳出地平线的时候，江面上铺满了金子。",
+        "我把这一天写进日记，怕自己以后忘掉。"
+      ],
+      "shuffle": [
+        2,
+        4,
+        0,
+        1,
+        3
+      ],
+      "before": [
+        [
+          "深蓝色",
+          "干石头"
+        ],
+        [
+          "干石头",
+          "一条粉红"
+        ],
+        [
+          "一条粉红",
+          "铺满了金子"
+        ],
+        [
+          "铺满了金子",
+          "写进日记"
+        ]
+      ],
+      "explain": "从天还没亮写到日出，再写把这一天记下来。",
+      "why": []
+    },
+    {
+      "id": "o08",
+      "kind": "order",
+      "prompt": "把这几句排成一段通顺的话。",
+      "stem": "",
+      "sentences": [
+        "早上出门前，妈妈忽然说钥匙不见了。",
+        "我趴到沙发底下一看，钥匙串正在灰尘里闪光。",
+        "妈妈接过钥匙，摸了摸我的头，说多亏你细心。",
+        "这件事让我知道，找东西要按顺序，不能只在原地转。"
+      ],
+      "shuffle": [
+        3,
+        0,
+        2,
+        1
+      ],
+      "before": [
+        [
+          "钥匙不见了",
+          "沙发底下"
+        ],
+        [
+          "沙发底下",
+          "摸了摸我的头"
+        ],
+        [
+          "摸了摸我的头",
+          "按顺序"
+        ]
+      ],
+      "explain": "先写钥匙丢了，再写找到、妈妈夸奖，最后写自己的体会。",
+      "why": []
+    },
+    {
+      "id": "p01",
+      "kind": "open",
+      "prompt": "这个开头适合哪篇作文？",
+      "stem": "风一吹，银杏叶像一把把小黄扇子，铺满了校园的路。",
+      "options": [
+        "校园里的秋天",
+        "我的好朋友",
+        "学会煎鸡蛋"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "这里没有朋友，也没有一起做事。",
+        "这里没有鸡蛋，也没有做菜。"
+      ],
+      "explain": "银杏叶和校园的路，是在写校园里的秋天。",
+      "keys": [
+        [
+          "银杏",
+          "校园"
+        ],
+        [
+          "朋友",
+          "约定"
+        ],
+        [
+          "鸡蛋",
+          "锅"
+        ]
+      ]
+    },
+    {
+      "id": "p02",
+      "kind": "open",
+      "prompt": "这个开头适合哪篇作文？",
+      "stem": "她总把橡皮切成小块借我，自己那块却只剩一个角。",
+      "options": [
+        "秋天的公园",
+        "我的好朋友",
+        "假如我有一支神笔"
+      ],
+      "answer": 1,
+      "why": [
+        "这里没有公园，也没有落叶。",
+        "",
+        "这里没有神笔，也没有愿望。"
+      ],
+      "explain": "借橡皮是朋友之间的事，适合写我的好朋友。",
+      "keys": [
+        [
+          "公园",
+          "落叶"
+        ],
+        [
+          "橡皮",
+          "借我"
+        ],
+        [
+          "神笔",
+          "愿望"
+        ]
+      ]
+    },
+    {
+      "id": "p03",
+      "kind": "open",
+      "prompt": "这个开头适合哪篇作文？",
+      "stem": "要是我真有一支想什么就画出什么的笔，我第一笔想画一座会走路的图书馆。",
+      "options": [
+        "二十年后的我",
+        "假如我有一支神笔",
+        "雨中的街头"
+      ],
+      "answer": 1,
+      "why": [
+        "这里没有二十年，也没有未来的工作。",
+        "",
+        "这里没有雨伞，也没有积水。"
+      ],
+      "explain": "想什么就画出什么，正是在想象一支神笔。",
+      "keys": [
+        [
+          "二十",
+          "工作"
+        ],
+        [
+          "画出什么",
+          "图书馆"
+        ],
+        [
+          "雨伞",
+          "积水"
+        ]
+      ]
+    },
+    {
+      "id": "p04",
+      "kind": "open",
+      "prompt": "这个开头适合哪篇作文？",
+      "stem": "自行车倒在草地上，我的膝盖火辣辣的，可我还是抓着车把站了起来。",
+      "options": [
+        "一件后悔的事",
+        "我学会了骑自行车",
+        "校园的一角"
+      ],
+      "answer": 1,
+      "why": [
+        "这里没有道歉，也看不出做错了什么。",
+        "",
+        "这里没有花坛，也没有宣传栏。"
+      ],
+      "explain": "车把和摔伤的膝盖，是在写学骑自行车。",
+      "keys": [
+        [
+          "对不起",
+          "眼泪"
+        ],
+        [
+          "车把",
+          "膝盖"
+        ],
+        [
+          "花坛",
+          "宣传栏"
+        ]
+      ]
+    },
+    {
+      "id": "d01",
+      "kind": "end",
+      "prompt": "题目是“我学会了煎鸡蛋”。哪个结尾更好？",
+      "stem": "",
+      "options": [
+        "原来学会一件小事，也要先看、再试、再改。我端出第一盘金黄的煎鸡蛋时，心里亮堂堂的。",
+        "今天星期一，我们班有很多人。",
+        "鸡蛋有蛋白质，所以要多吃鸡蛋。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "这句换到了班里的人数，没有收住煎鸡蛋这件事。",
+        "这句像上课讲知识，没有写出自己的感受。"
+      ],
+      "explain": "好的结尾要回到题目，并写出自己的感受。",
+      "must": [
+        "煎鸡蛋",
+        "亮堂堂"
+      ]
+    },
+    {
+      "id": "d02",
+      "kind": "end",
+      "prompt": "题目是“我的好朋友”。哪个结尾更好？",
+      "stem": "",
+      "options": [
+        "公园里的花很漂亮，我想再去一次。",
+        "朋友不一定天天说漂亮话，肯把最后一块橡皮推过来的人，我会一直记得。",
+        "写完这篇作文，我就去吃饭了。"
+      ],
+      "answer": 1,
+      "why": [
+        "花和公园跟朋友没有关系。",
+        "",
+        "去吃饭是另一件事，文章没有收住。"
+      ],
+      "explain": "结尾用橡皮这件小事回到友情，还写出了自己的心意。",
+      "must": [
+        "橡皮",
+        "一直记得"
+      ]
+    },
+    {
+      "id": "d03",
+      "kind": "end",
+      "prompt": "题目是“秋天的公园”。哪个结尾更好？",
+      "stem": "",
+      "options": [
+        "公园是一个地方，人们可以去玩。",
+        "我很喜欢作文，老师也喜欢。",
+        "走出公园时，我的口袋里还留着一片银杏叶，秋天就被我轻轻带回家了。"
+      ],
+      "answer": 2,
+      "why": [
+        "这句像在下定义，没有景色，也没有感受。",
+        "作文和老师把题目带跑了。",
+        ""
+      ],
+      "explain": "银杏叶把秋天带回了家，景色和感受接在一起。",
+      "must": [
+        "银杏叶",
+        "带回家"
+      ]
+    },
+    {
+      "id": "d04",
+      "kind": "end",
+      "prompt": "题目是“那次，我真的很后悔”。哪个结尾更好？",
+      "stem": "",
+      "options": [
+        "道歉的话终于说出口时，我的声音在抖，心里那块石头却轻了一点。",
+        "后悔是一种心情，每个人都会后悔。",
+        "那天晚上月亮很圆，星星很多。"
+      ],
+      "answer": 0,
+      "why": [
+        "",
+        "这句只解释词语，没有回到那件事。",
+        "月亮和星星跟后悔没有关系。"
+      ],
+      "explain": "结尾写出道歉的动作和心里的变化，才接得上后悔。",
+      "must": [
+        "道歉",
+        "石头"
+      ]
+    }
+  ]
+};
+function orderTaps(item){
+  var posOf = [];
+  for (var i = 0; i < item.shuffle.length; i++) posOf[item.shuffle[i]] = i;
+  var out = [];
+  for (var k = 0; k < item.sentences.length; k++) out.push(posOf[k]);
+  return out;
+}
+
+/*DATA-END*/
+/*APP-START*/
+var KEY = 'writing_v1';
+var STEPS = ['审题', '提纲', '写作', '自查'];
+var CHECKS = [
+  {k:'example', t:'我写了具体的例子，不是只说“很好”“很开心”'},
+  {k:'words', t:'我用上了好词或好句子'},
+  {k:'echo', t:'开头和结尾互相呼应'},
+  {k:'punct', t:'句号、逗号、问号我检查过了'},
+  {k:'read', t:'我出声读了一遍，改掉了错别字'}
+];
+var CATS = ['记事', '状物', '写人', '写景', '想象', '看图写话'];
+var DRILL_META = [
+  {kind:'specific', name:'把句子写具体', desc:'加上颜色、声音、动作，让人看见。'},
+  {kind:'expand', name:'扩句', desc:'把短句子写丰满，还要写得自然。'},
+  {kind:'sick', name:'修改病句', desc:'练成分残缺、搭配不当、重复、语序和关联词。'},
+  {kind:'order', name:'排序成段', desc:'把打乱的句子排成一段通顺的话。'},
+  {kind:'open', name:'开头和结尾', desc:'看开头像哪篇作文，再选一个收得住的结尾。'}
+];
+var store, toastTimer, audioCtx, saveTimer;
+var session = {
+  screen:'home', topicId:null, lastWhy:'', whyGood:false, misses:[],
+  drill:null, focusPara:'open', askSkip:false, forceWrite:false
+};
+
+function defaultStore(){
+  return {v:1, stars:0, streak:0, lastDay:'', mute:false, awarded:{}, drills:{}, drafts:{}};
+}
+function load(){
+  store = defaultStore();
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(!raw) return;
+    var o = JSON.parse(raw);
+    if(o && o.v===1){
+      store = defaultStore();
+      Object.keys(store).forEach(function(k){ if(o[k]!==undefined) store[k]=o[k]; });
+    }
+  }catch(e){}
+}
+function persist(){
+  try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){}
+}
+function schedule(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(function(){ touchDay(); persist(); }, 250);
+}
+function ymd(d){
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function touchDay(){
+  var t = ymd(new Date());
+  if(store.lastDay===t) return;
+  var y = new Date();
+  y.setDate(y.getDate()-1);
+  store.streak = store.lastDay===ymd(y) ? store.streak+1 : 1;
+  store.lastDay = t;
+}
+function countChars(s){ return String(s||'').replace(/\s/g,'').length; }
+function draftCount(d){
+  return countChars(d.paras.open)+countChars(d.paras.mid)+countChars(d.paras.end);
+}
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function topicById(id){
+  for(var i=0;i<DATA.topics.length;i++) if(DATA.topics[i].id===id) return DATA.topics[i];
+  return null;
+}
+function curTopic(){ return topicById(session.topicId); }
+function curDraft(){ return store.drafts[session.topicId]; }
+function newDraft(id){
+  return {
+    topicId:id, step:0, qi:0, solved:[false,false,false],
+    outline:{when:'',open:'',mid1:'',mid2:'',mid3:'',end:''},
+    paras:{open:'',mid:'',end:''},
+    ticks:{example:false,words:false,echo:false,punct:false,read:false},
+    finished:false, starGiven:false, updated:Date.now()
+  };
+}
+function fmtTime(ts){
+  var d = new Date(ts);
+  return (d.getMonth()+1)+'月'+d.getDate()+'日 '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+}
+function toast(msg){
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 2400);
+}
+function sound(kind){
+  if(store.mute) return;
+  try{
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
+    audioCtx = audioCtx || new AC();
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    var notes = kind==='ok' ? [523,659] : kind==='star' ? [523,659,784] : kind==='no' ? [311,233] : [494];
+    notes.forEach(function(f,i){
+      var o = audioCtx.createOscillator();
+      var g = audioCtx.createGain();
+      o.type = kind==='no' ? 'triangle' : 'sine';
+      o.frequency.value = f;
+      o.connect(g); g.connect(audioCtx.destination);
+      var t = audioCtx.currentTime + i*0.09;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.05, t+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t+0.2);
+      o.start(t); o.stop(t+0.22);
+    });
+  }catch(e){}
+}
+function pool(kind){
+  return DATA.drills.filter(function(it){
+    if(kind==='open') return it.kind==='open' || it.kind==='end';
+    return it.kind===kind;
+  });
+}
+function mastered(kind){
+  return pool(kind).filter(function(it){ return !!store.drills[it.id]; }).length;
+}
+
+function topbar(title){
+  var label = store.mute ? '开声' : '静音';
+  return '<div class="top"><button class="icon" data-act="back">返回</button><h2 class="grow">'+esc(title)+'</h2><button class="icon" data-act="mute" aria-label="'+label+'">'+label+'</button></div>';
+}
+function stepbar(step){
+  return '<div class="stepbar">'+STEPS.map(function(name,i){
+    var cls = i===step ? 'on' : (i<step ? 'done' : '');
+    return '<i class="'+cls+'">'+(i+1)+' '+name+'</i>';
+  }).join('')+'</div>';
+}
+
+function render(){
+  var html = '';
+  if(session.screen==='home') html = homeHtml();
+  else if(session.screen==='topics') html = topicsHtml();
+  else if(session.screen==='drafts') html = draftsHtml();
+  else if(session.screen==='drills') html = drillsHtml();
+  else if(session.screen==='drill') html = drillHtml();
+  else if(session.screen==='drill-done') html = drillDoneHtml();
+  else html = writeHtml();
+  document.getElementById('app').innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function homeHtml(){
+  var mute = store.mute ? '开声' : '静音';
+  return '<div class="wrap" data-screen="home">'
+    + '<div class="top"><div class="grow"><h1 class="logo">作文小作坊</h1><p class="sub">五年级 · 先想清楚，再慢慢写</p></div>'
+    + '<button class="icon" data-act="mute" aria-label="'+mute+'">'+mute+'</button></div>'
+    + '<div class="mascot"><p>小笔说：别急着写全文。先审题，再列提纲，然后一段一段写，最后自己查一查。</p></div>'
+    + '<div class="stats"><div class="stat"><span>星星</span><b id="starNum">'+store.stars+'</b></div>'
+    + '<div class="stat"><span>连续来写</span><b>'+(store.streak||0)+' 天</b></div></div>'
+    + '<div class="actions home">'
+    + '<button class="btn primary" data-act="topics">写作引导<small>把题目拆开，一步一步写</small></button>'
+    + '<button class="btn purple" data-act="drills">小练习<small>写具体、扩句、改病句</small></button>'
+    + '<button class="btn mint" data-act="drafts">我的作文<small>写到一半也能找回来</small></button>'
+    + '</div><p class="hint" style="margin-top:14px">写的作文只留在这台设备里，不用联网。</p></div>';
+}
+function topicsHtml(){
+  var body = CATS.map(function(cat){
+    var list = DATA.topics.filter(function(t){ return t.cat===cat; });
+    if(!list.length) return '';
+    return '<h3 class="cat-h">'+esc(cat)+'</h3><div class="topic-grid">'+list.map(function(t){
+      var d = store.drafts[t.id];
+      var mark = d ? (d.finished ? ' · 已完成' : ' · 写过') : '';
+      return '<button class="topic" data-act="open-topic" data-id="'+t.id+'"><span class="tag '+esc(t.cat)+'">'+esc(t.cat)+'</span><b>'+esc(t.title)+'</b><span>'+esc(t.blurb)+mark+'</span></button>';
+    }).join('')+'</div>';
+  }).join('');
+  return '<div class="wrap" data-screen="topics">'+topbar('选一个题目')+body+'</div>';
+}
+function draftsHtml(){
+  var ids = Object.keys(store.drafts).sort(function(a,b){ return (store.drafts[b].updated||0)-(store.drafts[a].updated||0); });
+  var body = ids.length ? '<div class="list">'+ids.map(function(id){
+    var d = store.drafts[id], t = topicById(id);
+    if(!t) return '';
+    var status = d.finished ? '已完成' : ['审题','提纲','正在写','自查'][d.step]||'';
+    return '<button class="draft" data-act="resume" data-id="'+id+'"><span class="tag '+esc(t.cat)+'">'+esc(t.cat)+'</span><b>'+esc(t.title)+'</b><span>'+status+' · '+draftCount(d)+' 字 · '+fmtTime(d.updated||Date.now())+'</span></button>';
+  }).join('')+'</div>' : '<p class="empty">还没有作文。先去写作引导里挑一个题目吧。</p>';
+  return '<div class="wrap" data-screen="drafts">'+topbar('我的作文')+body+'</div>';
+}
+function drillsHtml(){
+  var cards = DRILL_META.map(function(m){
+    var all = pool(m.kind).length;
+    return '<button class="topic" data-act="start-drill" data-kind="'+m.kind+'"><b>'+esc(m.name)+'</b><span>'+esc(m.desc)+'</span><span>已会 '+mastered(m.kind)+' / '+all+'</span></button>';
+  }).join('');
+  return '<div class="wrap" data-screen="drills">'+topbar('小练习')
+    + '<p class="hint">这些练习是在练写作的基本功。答错了没关系，看完提示再试。</p>'
+    + '<div class="drill-grid">'+cards+'</div></div>';
+}
+
+function writeHtml(){
+  var t = curTopic(), d = curDraft();
+  var inner = '';
+  if(d.step===0) inner = checkHtml(t,d);
+  else if(d.step===1) inner = outlineHtml(t,d);
+  else if(d.step===2) inner = paraHtml(t,d);
+  else inner = checkListHtml(t,d);
+  return '<div class="wrap" data-screen="write">'+topbar(t.title)+stepbar(d.step)+inner+'</div>';
+}
+function checkHtml(t,d){
+  var c = t.checks[d.qi];
+  var opts = c.options.map(function(op,i){
+    var cls = 'choice';
+    if(d.solved[d.qi] && i===c.ans) cls += ' good';
+    if(session.misses.indexOf(i)>=0) cls += ' bad';
+    var dis = (d.solved[d.qi] || session.misses.indexOf(i)>=0) ? ' disabled' : '';
+    return '<button class="'+cls+'" data-act="copt" data-i="'+i+'"'+dis+'>'+esc(op)+'</button>';
+  }).join('');
+  var whyCls = 'why'+(session.lastWhy ? ' show' : '')+(session.whyGood ? ' good' : '');
+  var next = '';
+  if(d.solved[d.qi]) next = '<button class="btn primary" data-act="c-next">'+(d.qi<2 ? '下一问' : '去列提纲')+'</button>';
+  return '<p class="progress">先想清楚再下笔 · 第 '+(d.qi+1)+' / 3 问</p>'
+    + (t.fig ? '<div class="fig">'+t.fig+'</div>' : '')
+    + '<div class="ask">'+esc(t.ask)+'</div>'
+    + '<h3 class="qtitle">'+esc(c.q)+'</h3>'
+    + opts
+    + '<div id="checkWhy" class="'+whyCls+'">'+esc(session.lastWhy||'')+'</div>'
+    + next;
+}
+function outlineHtml(t,d){
+  var cards = t.outline.map(function(card){
+    var starters = card.starters.map(function(st,si){
+      return '<button type="button" class="chip" data-act="starter" data-key="'+card.key+'" data-si="'+si+'">'+esc(st)+'</button>';
+    }).join('');
+    return '<div class="field"><label>'+esc(card.label)+'</label><p class="hint">'+esc(card.hint)+'</p>'
+      + '<textarea data-ol="'+card.key+'">'+esc(d.outline[card.key]||'')+'</textarea>'
+      + '<div class="starters">'+starters+'</div></div>';
+  }).join('');
+  var ask = '';
+  if(session.askSkip){
+    ask = '<div class="ask">提纲还空着，写的时候容易乱。要不要先填两句？<div class="row2" style="margin-top:8px"><button class="btn ghost" data-act="stay-outline">先去填</button><button class="btn primary" data-act="force-write">先写也行</button></div></div>';
+  }
+  return '<p class="hint">把题目拆开。每张卡片只想一件事。点下面的句子开头，可以放进格子里，再接着写。</p>'
+    + cards + ask + '<button class="btn primary" data-act="to-write">开始分段写</button>';
+}
+function paraHtml(t,d){
+  var n = draftCount(d);
+  var blocks = [
+    {k:'open', name:'开头', tip:'用两三句把人引进来，先别把结果说完。'},
+    {k:'mid', name:'中间', tip:'按提纲写具体的事。加上动作、对话或样子。'},
+    {k:'end', name:'结尾', tip:'回到开头的人或物，写你的感受，不要另起一个故事。'}
+  ].map(function(b){
+    return '<div class="field"><label>'+b.name+' <span class="pcount" data-pcount="'+b.k+'">'+countChars(d.paras[b.k])+' 字</span></label>'
+      + '<p class="hint">'+b.tip+'</p>'
+      + '<textarea data-para="'+b.k+'">'+esc(d.paras[b.k]||'')+'</textarea></div>';
+  }).join('');
+  var chips = t.words.map(function(w,i){
+    return '<button type="button" class="chip" data-act="word" data-wi="'+i+'">'+esc(w)+'</button>';
+  }).join('');
+  return '<div class="wbar"><div id="wc">已写 <b id="wcNum">'+n+'</b> 字</div>'
+    + '<div id="wcHint">五年级一般 400 字左右，写不到也没关系</div></div>'
+    + '<div class="write-layout"><div>'+blocks+'</div>'
+    + '<aside class="bank-col card"><div class="sec-h">好词好句</div><p class="hint">点一下，放进你正在写的那一段。先点一下那一段的空白处，再点词语。</p><div class="bank">'+chips+'</div></aside></div>'
+    + '<div class="foot"><button class="btn ghost" data-act="save">保存</button><button class="btn primary" data-act="to-check">写完，去自查</button></div>';
+}
+function checkListHtml(t,d){
+  var ticks = CHECKS.map(function(c){
+    var on = d.ticks[c.k] ? ' on' : '';
+    return '<button type="button" class="tick'+on+'" data-act="tick" data-k="'+c.k+'" aria-pressed="'+(d.ticks[c.k]?'true':'false')+'"><span class="box">'+(d.ticks[c.k]?'✓':'')+'</span><span>'+esc(c.t)+'</span></button>';
+  }).join('');
+  var done = d.starGiven ? '<p class="hint">这篇已经收过星星。改一改再保存也可以。</p>' : '<p class="hint">五项都是你自己打勾。勾完并且写了内容，就送你 3 颗星。</p>';
+  return '<div class="ask">写完先别急着交给别人。对着清单问自己，做到的才打勾。</div>'
+    + ticks + done
+    + '<div class="foot"><button class="btn ghost" data-act="save">保存</button><button class="btn mint" data-act="finish">这篇写好了</button></div>'
+    + '<p class="progress" style="margin-top:8px">全文 '+draftCount(d)+' 字</p>';
+}
+
+function drillHtml(){
+  var dr = session.drill;
+  var it = dr.items[dr.i];
+  var head = topbar(drillName(dr.kind))
+    + '<p class="progress">第 '+(dr.i+1)+' / '+dr.items.length+' 题'
+    + (it.type ? ' · <span class="tag">'+esc(it.type)+'</span>' : '') + '</p>';
+  var stemText = it.kind==='specific' ? '' : (it.kind==='sick'||it.kind==='expand' ? '原句：'+it.stem : (it.stem||''));
+  var stem = stemText ? '<div class="stem">'+esc(stemText)+'</div>' : '';
+  var body = it.kind==='order' ? orderBody(it, dr) : choiceBody(it, dr);
+  var whyCls = 'why'+(dr.why ? ' show' : '')+(dr.whyGood ? ' good' : '');
+  var next = dr.locked ? '<button class="btn primary" data-act="d-next">'+(dr.i<dr.items.length-1?'下一题':'看结果')+'</button>' : '';
+  return '<div class="wrap" data-screen="drill">'+head+'<h3 class="qtitle">'+esc(it.prompt)+'</h3>'+stem+body
+    + '<div id="drillWhy" class="'+whyCls+'">'+esc(dr.why||'')+'</div>'+next+'</div>';
+}
+function drillName(kind){
+  for(var i=0;i<DRILL_META.length;i++) if(DRILL_META[i].kind===kind) return DRILL_META[i].name;
+  return '小练习';
+}
+function choiceBody(it, dr){
+  return it.options.map(function(op,i){
+    var cls = 'choice';
+    if(dr.locked && i===it.answer) cls += ' good';
+    if((dr.bad||[]).indexOf(i)>=0) cls += ' bad';
+    var dis = (dr.locked || (dr.bad||[]).indexOf(i)>=0) ? ' disabled' : '';
+    return '<button class="'+cls+'" data-act="dopt" data-i="'+i+'"'+dis+'>'+esc(op)+'</button>';
+  }).join('');
+}
+function orderBody(it, dr){
+  var rank = {};
+  dr.seq.forEach(function(pos,n){ rank[pos]=n+1; });
+  var btns = it.shuffle.map(function(si,pos){
+    var on = rank[pos] ? ' good' : '';
+    var dis = (dr.locked || rank[pos]) ? ' disabled' : '';
+    var badge = rank[pos] ? rank[pos]+' ' : '';
+    return '<button class="choice'+on+'" data-act="pick" data-i="'+pos+'"'+dis+'>'+badge+esc(it.sentences[si])+'</button>';
+  }).join('');
+  var picked = dr.seq.map(function(pos,n){
+    var si = it.shuffle[pos];
+    return '<div class="picked"><em>'+(n+1)+'</em><span>'+esc(it.sentences[si])+'</span></div>';
+  }).join('');
+  var tools = '';
+  if(!dr.locked){
+    tools = '<div class="row2"><button class="btn ghost" data-act="d-undo">撤销上一句</button><button class="btn primary" data-act="d-submit">我排好了</button></div>';
+  }
+  var reveal = '';
+  if(dr.showOrder){
+    reveal = '<div class="card" style="margin-top:8px"><div class="sec-h">可以这样排</div>'
+      + it.sentences.map(function(s,i){ return '<div class="picked"><em>'+(i+1)+'</em><span>'+esc(s)+'</span></div>'; }).join('')
+      + '</div>';
+  }
+  return '<p class="hint">按你觉得通顺的顺序点句子。点过的会标上序号。</p>'+btns
+    + (picked ? '<div class="sec-h">你的顺序</div>'+picked : '') + tools + reveal;
+}
+function drillDoneHtml(){
+  var dr = session.drill;
+  return '<div class="wrap" data-screen="drill-done">'+topbar('练习结束')
+    + '<div class="card"><h2 style="font-size:26px">这一组做完啦</h2>'
+    + '<p style="margin-top:8px">一次就答对 <b>'+dr.correct+'</b> / '+dr.items.length+' 题</p>'
+    + '<p>新拿到 <b>'+dr.stars+'</b> 颗星。会了的题，下次再做就不重复发星了。</p></div>'
+    + '<div class="actions" style="margin-top:12px"><button class="btn primary" data-act="drills">再选一组</button>'
+    + '<button class="btn ghost" data-act="home">回首页</button></div></div>';
+}
+
+function openTopic(id){
+  if(!store.drafts[id]) store.drafts[id] = newDraft(id);
+  session.topicId = id;
+  session.screen = 'write';
+  session.misses = [];
+  session.lastWhy = '';
+  session.whyGood = false;
+  session.askSkip = false;
+  session.forceWrite = false;
+  session.focusPara = 'open';
+  persist();
+  render();
+}
+function startDrill(kind){
+  var items = pool(kind).slice(0,5);
+  session.drill = {kind:kind, items:items, i:0, locked:false, correct:0, stars:0, first:null, why:'', whyGood:false, seq:[], tries:0, showOrder:false, bad:[]};
+  session.screen = 'drill';
+  render();
+}
+function awardDrill(it, firstTry){
+  var dr = session.drill;
+  if(!firstTry) return;
+  dr.correct++;
+  if(!store.drills[it.id]){
+    store.drills[it.id] = 1;
+    store.stars++;
+    dr.stars++;
+    sound('star');
+  }else sound('ok');
+}
+
+function onClick(e){
+  var btn = e.target.closest('[data-act]');
+  if(!btn) return;
+  var act = btn.dataset.act;
+  if(act==='mute'){
+    store.mute = !store.mute;
+    persist();
+    render();
+    return;
+  }
+  if(act==='home'){ session.screen='home'; render(); return; }
+  if(act==='topics'){ session.screen='topics'; render(); return; }
+  if(act==='drafts'){ session.screen='drafts'; render(); return; }
+  if(act==='drills'){ session.screen='drills'; render(); return; }
+  if(act==='back'){ goBack(); return; }
+  if(act==='open-topic' || act==='resume'){ openTopic(btn.dataset.id); return; }
+  if(act==='start-drill'){ startDrill(btn.dataset.kind); return; }
+  if(act==='copt'){ pickCheck(+btn.dataset.i); return; }
+  if(act==='c-next'){ nextCheck(); return; }
+  if(act==='starter'){ insertStarter(btn.dataset.key, +btn.dataset.si); return; }
+  if(act==='to-write'){ goWrite(false); return; }
+  if(act==='force-write'){ goWrite(true); return; }
+  if(act==='stay-outline'){ session.askSkip=false; render(); return; }
+  if(act==='word'){ insertWord(+btn.dataset.wi); return; }
+  if(act==='save'){ touchDay(); persist(); toast('已经帮你收好了，下次打开还在'); sound('tap'); return; }
+  if(act==='to-check'){ curDraft().step=3; curDraft().updated=Date.now(); touchDay(); persist(); render(); return; }
+  if(act==='tick'){ toggleTick(btn); return; }
+  if(act==='finish'){ finishDraft(); return; }
+  if(act==='dopt'){ pickDrill(+btn.dataset.i); return; }
+  if(act==='pick'){ pickOrder(+btn.dataset.i); return; }
+  if(act==='d-undo'){ session.drill.seq.pop(); render(); return; }
+  if(act==='d-submit'){ submitOrder(); return; }
+  if(act==='d-next'){ nextDrill(); return; }
+}
+function goBack(){
+  if(session.screen==='write'){
+    var d = curDraft();
+    if(d.step===0 && d.qi>0){
+      d.qi--; session.misses=[]; session.lastWhy=''; session.whyGood=false; persist(); render(); return;
+    }
+    if(d.step>0){ d.step--; persist(); render(); return; }
+    session.screen='topics'; render(); return;
+  }
+  if(session.screen==='drill' || session.screen==='drill-done'){ session.screen='drills'; render(); return; }
+  session.screen='home'; render();
+}
+function pickCheck(i){
+  var d = curDraft(), c = curTopic().checks[d.qi];
+  if(d.solved[d.qi]) return;
+  if(i===c.ans){
+    d.solved[d.qi] = true;
+    session.lastWhy = c.why[i] || '想对啦，就是这个意思。';
+    session.whyGood = true;
+    d.updated = Date.now();
+    sound('ok');
+    persist();
+  }else{
+    if(session.misses.indexOf(i)<0) session.misses.push(i);
+    session.lastWhy = c.why[i];
+    session.whyGood = false;
+    sound('no');
+  }
+  render();
+}
+function nextCheck(){
+  var d = curDraft();
+  if(!d.solved[d.qi]) return;
+  session.misses = [];
+  session.lastWhy = '';
+  session.whyGood = false;
+  if(d.qi<2) d.qi++;
+  else d.step = 1;
+  d.updated = Date.now();
+  persist();
+  render();
+}
+function insertStarter(key, si){
+  var d = curDraft();
+  var card = null;
+  curTopic().outline.forEach(function(c){ if(c.key===key) card=c; });
+  if(!card) return;
+  var text = card.starters[si];
+  var cur = d.outline[key] || '';
+  d.outline[key] = cur ? (cur.replace(/\s+$/,'')+'\n'+text) : text;
+  d.updated = Date.now();
+  var ta = document.querySelector('[data-ol="'+key+'"]');
+  if(ta) ta.value = d.outline[key];
+  else render();
+  touchDay(); persist();
+  sound('tap');
+}
+function goWrite(force){
+  var d = curDraft();
+  var keys = ['when','open','mid1','mid2','end'];
+  var empty = keys.every(function(k){ return !(d.outline[k]||'').trim(); });
+  if(empty && !force && !session.forceWrite){
+    session.askSkip = true;
+    render();
+    return;
+  }
+  session.askSkip = false;
+  session.forceWrite = true;
+  d.step = 2;
+  d.updated = Date.now();
+  persist();
+  render();
+}
+function insertWord(i){
+  var d = curDraft();
+  var w = curTopic().words[i];
+  var key = session.focusPara || 'open';
+  if(!d.paras[key] && key!=='open' && !document.querySelector('[data-para="'+key+'"]')) key = 'open';
+  d.paras[key] = (d.paras[key]||'') + w;
+  d.updated = Date.now();
+  var ta = document.querySelector('[data-para="'+key+'"]');
+  if(ta) ta.value = d.paras[key];
+  updateWC();
+  touchDay(); persist();
+  var name = {open:'开头', mid:'中间', end:'结尾'}[key];
+  toast('已放进'+name);
+  sound('tap');
+}
+function updateWC(){
+  var d = curDraft();
+  if(!d) return;
+  var num = document.getElementById('wcNum');
+  if(num) num.textContent = String(draftCount(d));
+  ['open','mid','end'].forEach(function(k){
+    var p = document.querySelector('[data-pcount="'+k+'"]');
+    if(p) p.textContent = countChars(d.paras[k])+' 字';
+  });
+}
+function onInput(e){
+  var el = e.target, d = session.topicId && store.drafts[session.topicId];
+  if(!d) return;
+  if(el.dataset && el.dataset.ol){
+    d.outline[el.dataset.ol] = el.value;
+    d.updated = Date.now();
+    schedule();
+  }
+  if(el.dataset && el.dataset.para){
+    d.paras[el.dataset.para] = el.value;
+    d.updated = Date.now();
+    updateWC();
+    schedule();
+  }
+}
+function toggleTick(btn){
+  var d = curDraft();
+  var k = btn.dataset.k;
+  d.ticks[k] = !d.ticks[k];
+  d.updated = Date.now();
+  btn.classList.toggle('on', d.ticks[k]);
+  btn.setAttribute('aria-pressed', d.ticks[k] ? 'true' : 'false');
+  var box = btn.querySelector('.box');
+  if(box) box.textContent = d.ticks[k] ? '✓' : '';
+  schedule();
+}
+function finishDraft(){
+  var d = curDraft();
+  var all = CHECKS.every(function(c){ return !!d.ticks[c.k]; });
+  if(!all){ toast('先把五项都看一遍，做到了再打勾'); sound('no'); return; }
+  if(draftCount(d)<20){ toast('再写具体一点，满二十个字就能收星星'); sound('no'); return; }
+  d.finished = true;
+  d.updated = Date.now();
+  if(!d.starGiven){
+    d.starGiven = true;
+    store.stars += 3;
+    store.awarded[d.topicId] = true;
+    toast('这篇写完啦，收到 3 颗星');
+    sound('star');
+  }else toast('这篇已经收过星星，修改也已经保存');
+  touchDay(); persist();
+}
+function pickDrill(i){
+  var dr = session.drill;
+  var it = dr.items[dr.i];
+  if(dr.locked) return;
+  if(dr.first==null) dr.first = i;
+  if(i===it.answer){
+    dr.locked = true;
+    dr.why = it.explain;
+    dr.whyGood = true;
+    awardDrill(it, dr.first===it.answer);
+    if(dr.first!==it.answer) sound('ok');
+  }else{
+    if(dr.bad.indexOf(i)<0) dr.bad.push(i);
+    dr.why = it.why[i];
+    dr.whyGood = false;
+    sound('no');
+  }
+  touchDay(); persist(); render();
+}
+function pickOrder(i){
+  var dr = session.drill;
+  if(dr.locked) return;
+  if(dr.seq.indexOf(i)>=0) return;
+  dr.seq.push(i);
+  sound('tap');
+  render();
+}
+function submitOrder(){
+  var dr = session.drill;
+  var it = dr.items[dr.i];
+  if(dr.locked) return;
+  if(dr.seq.length!==it.sentences.length){
+    dr.why = '还有句子没排进去。每一句都要点到。';
+    dr.whyGood = false;
+    render();
+    return;
+  }
+  var expect = orderTaps(it);
+  var same = dr.seq.every(function(v,idx){ return v===expect[idx]; });
+  if(dr.first==null) dr.first = same ? 1 : 0;
+  if(same){
+    dr.locked = true;
+    dr.why = it.explain;
+    dr.whyGood = true;
+    awardDrill(it, dr.tries===0);
+    touchDay(); persist(); render();
+    return;
+  }
+  dr.tries++;
+  if(dr.tries>=2){
+    dr.locked = true;
+    dr.showOrder = true;
+    dr.why = it.explain;
+    dr.whyGood = false;
+    sound('no');
+  }else{
+    dr.seq = [];
+    dr.why = '顺序还有一点乱。先找哪一句是开头，哪一句是结尾，再试一次。';
+    dr.whyGood = false;
+    sound('no');
+  }
+  touchDay(); persist(); render();
+}
+function nextDrill(){
+  var dr = session.drill;
+  if(!dr.locked) return;
+  if(dr.i>=dr.items.length-1){ session.screen='drill-done'; render(); return; }
+  dr.i++;
+  dr.locked = false;
+  dr.first = null;
+  dr.why = '';
+  dr.whyGood = false;
+  dr.seq = [];
+  dr.tries = 0;
+  dr.showOrder = false;
+  dr.bad = [];
+  render();
+}
+
+function boot(){
+  load();
+  var app = document.getElementById('app');
+  app.addEventListener('click', onClick);
+  app.addEventListener('input', onInput);
+  app.addEventListener('focusin', function(e){
+    if(e.target && e.target.dataset && e.target.dataset.para) session.focusPara = e.target.dataset.para;
+  });
+  render();
+}
+boot();
+
+window.ZW = {
+  get store(){ return store; },
+  get session(){ return session; },
+  count: countChars,
+  orderTaps: orderTaps,
+  drillItem: function(){ return session.drill ? session.drill.items[session.drill.i] : null; }
+};
+
+/*APP-END*/
+</script>
+</body>
+</html>
